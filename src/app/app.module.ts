@@ -9,6 +9,7 @@ import { HeaderComponent } from './components/header/header.component';
 
 import { ToastrModule } from 'ngx-toastr';
 import { HomepageComponent } from './components/homepage/homepage.component';
+import { AboutMeComponent } from './components/about-me/about-me.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { HomepageComponent } from './components/homepage/homepage.component';
     AppComponent,
     FooterComponent,
     HeaderComponent,
-    HomepageComponent
+    HomepageComponent,
+    AboutMeComponent
   ],
   imports: [
     BrowserModule,

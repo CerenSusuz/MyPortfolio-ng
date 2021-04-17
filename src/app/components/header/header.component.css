@@ -53,10 +53,6 @@
     font-size: 30px;
 }
 
-.community-area a.google-plus i {
-    background: #e93121;
-}
-
 .community-area a.linkedin i {
     background: #0e76a8;
 }
@@ -65,10 +61,10 @@
     background: #171515;
 }
 
-.community-area a.youtube i {
-    background: #ff0000;
-}
-
 .community-area a.twitter i {
     background: #1da1f2;
+}
+
+.community-area a.instagram i {
+    background: #b65bb9;
 }

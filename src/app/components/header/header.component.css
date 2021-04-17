@@ -1,70 +1,15 @@
 .navbar {
-    color: rgb(46, 56, 56);
-    border-bottom: 3px solid #0c6e32;
-    border-top: 3px solid #0c6e32;
-    background-color: rgb(197, 223, 224);
+    opacity: 0.8;
+    background-color:rgb(252, 252, 228);
     border-radius: 10px;
     font-size: 16px;
     font-weight: 700;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-.community-area {
-    overflow: hidden;
-}
-
-.community-area i,
-.community-area i:hover {
-    -webkit-transition: all .3s;
-    -o-transition: all .3s;
-    transition: all .3s;
-}
-
 .community-area i {
     display: inline-block;
-    color: aliceblue;
+    color: black;
     border-radius: 100%;
     border: 1px solid transparent;
-}
-
-.community-area i:hover {
-    border-color: aliceblue;
-}
-
-.community-area .mid-social i {
-    height: 40px;
-    width: 40px;
-    line-height: 40px;
-    font-size: 20px;
-}
-
-.community-area .mid-social i:hover {
-    font-size: 15px;
-}
-
-.community-area .big-social i:hover {
-    font-size: 20px;
-}
-
-.community-area .big-social i {
-    height: 50px;
-    width: 50px;
-    line-height: 50px;
-    font-size: 30px;
-}
-
-.community-area a.linkedin i {
-    background: #0e76a8;
-}
-
-.community-area a.github i {
-    background: #171515;
-}
-
-.community-area a.twitter i {
-    background: #1da1f2;
-}
-
-.community-area a.instagram i {
-    background: #b65bb9;
 }

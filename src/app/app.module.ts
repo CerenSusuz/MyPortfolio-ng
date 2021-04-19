@@ -13,6 +13,11 @@ import { AboutMeComponent } from './components/about-me/about-me.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { BlogsComponent } from './components/blogs/blog-list/blogs.component';
+import { ProjectsComponent } from './components/projects/projects.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { CertificateComponent } from './components/certificate/certificate.component';
 
 
 @NgModule({
@@ -24,7 +29,10 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
     AboutMeComponent,
     ContactComponent,
     LoginComponent,
-    SignUpComponent
+    SignUpComponent,
+    BlogsComponent,
+    ProjectsComponent,
+    CertificateComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +42,11 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
       positionClass:"toast-bottom-right"
     }),
   ],
-  providers: [],
+  providers: [{
+    provide:HTTP_INTERCEPTORS,
+    useClass:AuthInterceptor,
+    multi:true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

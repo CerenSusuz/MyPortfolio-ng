@@ -1,27 +1,34 @@
-<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
   <div class="container">
-    <a class="navbar-brand" href="#">
-      <img src="/assets/img/computer1_77902.png" alt="logo" width="30" height="24">
-      &nbsp; Ceren SUSUZ
+    <a class="navbar-brand js-scroll-trigger">
+      <img routerLink="homepage" class="img-fluid" src="assets/img/logo.png" alt="logo" width="80px" />
     </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      Menu
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+    <div class="collapse navbar-collapse ms-5 ps-5" id="navbarResponsive">
+      <ul class="navbar-nav text-uppercase ml-auto">
+        <img class="img-fluid" src="assets/img/computer.png" alt="logo" width="40px" />
+        <li class="nav-item"> 
+          <a class="nav-link active" aria-current="page" routerLink="homepage">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Projects</a>
+          <a class="nav-link" aria-current="page" routerLink="aboutMe">About Me</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Blogs</a>
+          <a class="nav-link" aria-current="page" >Projects</a>
         </li>
-
-        <li class="nav-item dropdown ms-4 ps-4">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" >Blogs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" routerLink="contact">Contact Me</a>
+        </li>
+        
+        <li class="nav-item dropdown ">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
             aria-expanded="false">
             USER
@@ -33,29 +40,27 @@
         </li>
       </ul>
 
+        <form class="d-flex">
+          <div class="d-flex btn-group" role="group" aria-label="Basic radio toggle button group">
+  
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off">
+            <label class="btn btn-outline-warning" routerLink="login" for="btnradio1">Log In</label>
+  
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+            <label class="btn btn-outline-success" routerLink="signUp" for="btnradio2">Sign Up</label>
 
-      <form class="d-flex">
-        <div class="d-flex btn-group ps-4" role="group" aria-label="Basic radio toggle button group">
+          </div>
+        </form>
 
-          <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off">
-          <label class="btn btn-outline-warning" for="btnradio1">Log In</label>
-
-          <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-          <label class="btn btn-outline-success" for="btnradio2">Sign Up</label>
-
+        <div class="community-area" id="social-media">
+          <a href="https://www.linkedin.com/in/ceren-susuz-2a70841b3/"><i class="fab fa-linkedin ps-2"></i></a>
+          <a href="https://github.com/CerenSusuz"><i class="fab fa-github ps-2"></i></a>
+          <a href="https://twitter.com/cerennssz"><i class="fab fa-twitter ps-2"></i></a>
+          <a href="https://www.instagram.com/cerensusuzz/"><i class="fab fa-instagram ps-2"></i></a>
         </div>
-      </form>
-
-
-      <div class="community-area ms-4 ps-4" id="social-media">
-        <a href="https://www.linkedin.com/in/ceren-susuz-2a70841b3/"><i class="fab fa-linkedin ps-2"></i></a>
-        <a href="https://github.com/CerenSusuz"><i class="fab fa-github ps-2"></i></a>
-        <a href="https://twitter.com/cerennssz"><i class="fab fa-twitter ps-2"></i></a>
-        <a href="https://www.instagram.com/cerensusuzz/"><i class="fab fa-instagram ps-2"></i></a>
-      </div>
+  
 
     </div>
 
   </div>
-
 </nav>

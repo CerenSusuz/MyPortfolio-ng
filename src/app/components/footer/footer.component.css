@@ -2,13 +2,12 @@ footer {
     margin: 8px;
     padding: 8px;
     line-height: 40px;
-    background-color:rgb(252, 252, 228);
     border-radius: 20px;
     font-weight: 700;
-    color: rgb(1, 99, 99);
+    color: rgb(107, 112, 112);
   }
 
   a {
     text-decoration: none;
-    color: rgb(61, 133, 136) ;
+    color: rgb(203, 224, 224) ;
   }

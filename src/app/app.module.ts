@@ -18,6 +18,7 @@ import { ProjectsComponent } from './components/projects/projects.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CertificateComponent } from './components/certificate/certificate.component';
+import { BlogDetaillComponent } from './components/blogs/blog-detaill/blog-detaill.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { CertificateComponent } from './components/certificate/certificate.compo
     SignUpComponent,
     BlogsComponent,
     ProjectsComponent,
-    CertificateComponent
+    CertificateComponent,
+    BlogDetaillComponent
   ],
   imports: [
     BrowserModule,

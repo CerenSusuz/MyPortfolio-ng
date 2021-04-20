@@ -8,4 +8,5 @@ export interface Project{
     title:string;
     description:string;
     content:string;
+    link:string;
 }

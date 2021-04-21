@@ -26,7 +26,6 @@ export class EditInfoComponent implements OnInit {
 
   ngOnInit(): void {
     this.createProfileAddForm();
-    console.log(this.user)
     this.getUser();
   }
 
@@ -48,11 +47,14 @@ export class EditInfoComponent implements OnInit {
               email:this.user.email,
               password:""
             })
-            console.log(this.user)
         },responseError=>{
           this.toastrService.error(responseError.error);
         })
       
+  }
+
+  getName(){
+    return sessionStorage.getItem('fullName');
   }
 
   editProfile(){
@@ -60,6 +62,8 @@ export class EditInfoComponent implements OnInit {
       let profileModel = Object.assign({},this.editProfileForm.value)
       console.log(this.user)
       profileModel.id=this.user.id;
+      profileModel.firstName=this.user.firstName;
+      profileModel.lastName=this.user.lastName;
       console.log(profileModel)
       this.userService.update(profileModel).subscribe(response=>{
         this.toastrService.success("Login AGAIN please");

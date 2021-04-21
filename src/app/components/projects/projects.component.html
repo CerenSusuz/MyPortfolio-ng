@@ -1,24 +1,26 @@
  <!-- Projects -->
-
  <div id="project" class="section lb">
     <div class="container">
       <div class="section-title text-left">
         <h3>Projects</h3>
+        <hr>
       </div>
 
-      <div *ngIf="projects" class="row ms-3">
-        <div *ngFor="let project of projects" class="col-md-8 col-sm-8 col-lg-8">
+      <div *ngIf="projects" class="row mt-5">
+        <div *ngFor="let project of projects" class="col-md-8 col-sm-8 col-lg-8 mt-5">
           <div class="services-inner-box">
-            <div class="ser-icon mt-5">
+            <div class="ser-icon">
               <i class="fas fa-file-code"></i>
             </div>
             <h4>{{ project.title }}</h4>
             <hr>
             <p>Description: {{ project.description }}</p>
             <hr>
-            <a>Content: {{ project.content }}</a>
+            Content:
+            <a href="">{{ project.content }}</a>
             <hr>
-            <a>Link: {{ project.link }}</a>
+            Link:
+            <a href="">{{ project.link }}</a>
           </div>
         </div>
       </div>

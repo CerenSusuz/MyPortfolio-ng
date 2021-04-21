@@ -24,6 +24,13 @@ import { BlogDetaillComponent } from './components/blogs/blog-detaill/blog-detai
 import { AdminComponent } from './components/admin/admin.component';
 import { CertificateDetailComponent } from './components/certificate/certificate-detail/certificate-detail.component';
 import { EditInfoComponent } from './components/edit-info/edit-info.component';
+import { BlogAddComponent } from './components/blogs/blog-add/blog-add.component';
+import { BlogUpdateComponent } from './components/blogs/blog-update/blog-update.component';
+import { BlogImageAddComponent } from './components/blogs/blog-image-add/blog-image-add.component';
+import { CertificateUpdateComponent } from './components/certificate/certificate-update/certificate-update.component';
+import { CertificateAddComponent } from './components/certificate/certificate-add/certificate-add.component';
+import { ProjectAddComponent } from './components/projects/project-add/project-add.component';
+import { ProjectUpdateComponent } from './components/projects/project-update/project-update.component';
 
 
 @NgModule({
@@ -42,7 +49,14 @@ import { EditInfoComponent } from './components/edit-info/edit-info.component';
     BlogDetaillComponent,
     AdminComponent,
     CertificateDetailComponent,
-    EditInfoComponent
+    EditInfoComponent,
+    BlogAddComponent,
+    BlogUpdateComponent,
+    BlogImageAddComponent,
+    CertificateUpdateComponent,
+    CertificateAddComponent,
+    ProjectAddComponent,
+    ProjectUpdateComponent
   ],
   imports: [
     BrowserModule,

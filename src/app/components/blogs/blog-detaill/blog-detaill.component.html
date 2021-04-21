@@ -1,10 +1,10 @@
-<div class="container mt-5 pt-5">
+<div class="container ">
     <div *ngIf="blog">
 
-        <div id="carouselExampleIndicators" class="carousel slide mt-5 pt-3" data-bs-ride="carousel">
-            <div class="carousel-inner mt-5">
+        <div id="carouselExampleIndicators" class="carousel slidept-3" data-bs-ride="carousel">
+            <div class="carousel-inner">
                 <div *ngFor="let image of images; let i = index" [ngClass]="getSliderClassName(i)">
-                    <img src="{{ imageUrl }}/{{ image.imagePath }}" class="d-block w-100" width="200" height="400"
+                    <img src="{{ imageUrl }}/{{ image.imagePath }}" class="d-block w-100" width="100" height="450"
                         alt="blogImage" />
                 </div>
             </div>
@@ -28,7 +28,7 @@
             </blockquote>
             <p style="font-size: 18px;">{{blog.content}}</p>
             <hr>
-            <p class="blog-post-meta float-end">created at {{blog.publishedDate | date:'dd-MM-yyyy'}} by <a href="#">Ceren</a></p>
+            <p class="blog-post-meta float-end">created at {{blog.publishedDate | date:'dd-MM-yyyy'}} by <a href="https://www.linkedin.com/in/ceren-susuz-2a70841b3/"><i class="fab fa-linkedin ps-2"></i>  Ceren Susuz</a></p>
             
         </article>
 

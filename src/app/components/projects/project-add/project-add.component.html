@@ -1,0 +1,63 @@
+<div class="container">
+    <div class="card" style="border-radius: 18px; color: darkgreen; border-color: darkolivegreen;">
+      <div class="card-header">
+        <h5 style="color:rgb(77, 90, 77); font-weight: 700; font-size: 24px;" class="title mt-2" >Add Project</h5>
+      </div>
+    
+      <div class="card-body">
+    
+        <form [formGroup]="projectAddForm">
+    
+          <div class="row">
+  
+              <div class="row">
+                  <div class="mb-3">
+                    <label for="title">title</label>
+                    <div class="form-group">
+                      <input type="text" id="title" class="form-control" formControlName="title" />
+                    </div>
+                  </div>
+                </div>
+    
+            <div class="col-6">
+              <div class="mb-3">
+                <label for="description">description</label>
+                <div class="form-group">
+                  <input type="text" id="description" class="form-control" formControlName="description" />
+                </div>
+              </div>
+            </div>
+    
+          </div>
+    
+          <div class="row">
+            <div class="mb-3">
+              <label for="content">content</label>
+              <div class="form-group">
+                <input type="text" id="content" class="form-control" formControlName="content" />
+              </div>
+            </div>
+          </div>
+
+              
+          <div class="row">
+            <div class="mb-3">
+              <label for="link">link</label>
+              <div class="form-group">
+                <input type="text" id="link" class="form-control" formControlName="link" />
+              </div>
+            </div>
+          </div>
+    
+    
+        </form>
+    
+      </div>
+    
+      <div class="card-footer">
+        <button class="btn btn-fill btn-success" (click)="add()">ADD</button>
+      </div>
+    
+    </div>
+  </div>
+  

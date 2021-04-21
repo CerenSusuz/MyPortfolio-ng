@@ -6,7 +6,6 @@ export interface Blog{
     isActive:boolean;
     
     title:string;
-    subjectId:number;
     content:string;
     description:string;
     publishedDate:Date;

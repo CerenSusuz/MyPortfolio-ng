@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="card" style="border-radius: 18px; color: darkgreen; border-color: darkolivegreen;">
+      <div class="card-header">
+        <h5 style="color:rgb(77, 90, 77); font-weight: 700; font-size: 24px;" class="title mt-2" >Update Certificate</h5>
+      </div>
+    
+      <div class="card-body">
+    
+        <form [formGroup]="certificateUpdateForm">
+    
+          <div class="row">
+  
+              <div class="row">
+                  <div class="mb-3">
+                    <label for="title">title</label>
+                    <div class="form-group">
+                      <input type="text" id="title" class="form-control" formControlName="title" />
+                    </div>
+                  </div>
+                </div>
+    
+            <div class="col-6">
+              <div class="mb-3">
+                <label for="receivedDate">Received Date</label>
+                <div class="form-group">
+                  <input type="date" id="receivedDate" class="form-control" formControlName="receivedDate" />
+                </div>
+              </div>
+            </div>
+    
+          </div>
+    
+    
+        </form>
+    
+      </div>
+    
+      <div class="card-footer">
+        <button class="btn btn-fill btn-success" (click)="update()">Update</button>
+      </div>
+    
+    </div>
+  </div>

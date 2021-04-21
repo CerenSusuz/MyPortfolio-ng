@@ -6,7 +6,7 @@
         <h3>Blogs</h3>
       </div>
 
-      <div *ngIf="blogs" class="row ms-3">
+      <div *ngIf="blogs" class="row m-3">
         <div *ngFor="let blog of blogs" class="col-md-3 col-sm-6 col-lg-4">
           <div class="post-box">
             <div class="post-thumb">
@@ -18,10 +18,9 @@
             <div class="post-info">
               <h4>{{blog.title}}</h4>
               <p>{{blog.description}}</p>
-              <span>{{blog.subjectId}}</span>
             </div>
           </div>
-          <button type="button" class="btn btn-warning float-end" routerLink = "/blogs/details/{{blog.id}}">Show Detail</button>
+          <button type="button" class="btn btn-warning float-end m-3" routerLink = "/blogs/details/{{blog.id}}">Show Detail</button>
         </div>
       </div>
     </div>

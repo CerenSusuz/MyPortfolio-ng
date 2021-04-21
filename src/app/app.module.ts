@@ -31,6 +31,7 @@ import { CertificateUpdateComponent } from './components/certificate/certificate
 import { CertificateAddComponent } from './components/certificate/certificate-add/certificate-add.component';
 import { ProjectAddComponent } from './components/projects/project-add/project-add.component';
 import { ProjectUpdateComponent } from './components/projects/project-update/project-update.component';
+import { CertificateImageAddComponent } from './components/certificate/certificate-image-add/certificate-image-add.component';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import { ProjectUpdateComponent } from './components/projects/project-update/pro
     CertificateUpdateComponent,
     CertificateAddComponent,
     ProjectAddComponent,
-    ProjectUpdateComponent
+    ProjectUpdateComponent,
+    CertificateImageAddComponent
   ],
   imports: [
     BrowserModule,

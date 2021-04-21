@@ -59,9 +59,7 @@ export class CertificateUpdateComponent implements OnInit {
       },responseError=>{
         this.toastr.error(responseError.error)
       })
-    }else{
-      this.toastr.error("UPDATE ERROR")
-    }    
+    }  
 
   }
 

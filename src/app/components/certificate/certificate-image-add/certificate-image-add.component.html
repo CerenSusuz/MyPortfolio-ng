@@ -25,28 +25,21 @@
             <th scope="col" style="background-color: rgb(174, 204, 214); border-radius: 10px">
                 title
             </th>
-            <th scope="col" style="background-color: rgb(148, 199, 218); border-radius: 10px">
-                content
-            </th>
-            <th scope="col" style="background-color: rgb(139, 209, 233); border-radius: 10px">
-                description
-            </th>
             <th scope="col" style="background-color: rgb(130, 207, 233); border-radius: 10px">
-                publishedDate
+                receivedDate
             </th>
   
           </tr>
   
         </thead>
         <tbody>
-          <tr *ngIf="blog">
-            <td>{{ blog.title | uppercase}}</td>
-            <td>{{ blog.content }}</td>
-            <td>{{ blog.description }}</td>
-            <td>{{ blog.publishedDate }}</td>
+          <tr *ngIf="certificate">
+            <td>{{ certificate.title | uppercase}}</td>>
+            <td>{{ certificate.receivedDate }}</td>
           </tr>
         </tbody>
       </table>
+      
     </div>
     
     <div class="row m-4">

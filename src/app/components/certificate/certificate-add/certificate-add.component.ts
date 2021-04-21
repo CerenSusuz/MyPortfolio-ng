@@ -33,13 +33,11 @@ export class CertificateAddComponent implements OnInit {
       let certificateModel = Object.assign({},this.certificateAddForm.value)
       console.log(certificateModel)
       this.certificateService.add(certificateModel).subscribe(response=>{
-        this.toastrService.success("OK")
+        this.toastrService.success("OK admin")
         this.router.navigate(['/admin']);
       },responseError=>{
-        this.toastrService.info("Good Job admin")
+        this.toastrService.error('ERROR')
       })
-    }else{
-      this.toastrService.error('ERROR')
     }
   }
 

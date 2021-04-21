@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Blog } from 'src/app/models/blog';
-import { BlogImage } from 'src/app/models/blogImage';
+import { Certificate } from 'src/app/models/certificate';
+import { CertificateImage } from 'src/app/models/certificateImage';
 import { environment } from 'src/environments/environment';
 import { ToastrService } from 'ngx-toastr';
-import { BlogService } from 'src/app/services/blog.service';
-import { BlogImageService } from 'src/app/services/blog-images.service';
+import { CertificateService } from 'src/app/services/certificate.service';
+import { CertificateImageService } from 'src/app/services/certificate-images.service';
 
 class ImageSnippet {
   pending: boolean = false;
@@ -14,45 +14,43 @@ class ImageSnippet {
 }
 
 @Component({
-  selector: 'app-blog-image-add',
-  templateUrl: './blog-image-add.component.html',
-  styleUrls: ['./blog-image-add.component.css']
+  selector: 'app-certificate-image-add',
+  templateUrl: './certificate-image-add.component.html',
+  styleUrls: ['./certificate-image-add.component.css']
 })
+export class CertificateImageAddComponent implements OnInit {
 
-export class BlogImageAddComponent implements OnInit {
-
-  blog:Blog;
-  images:BlogImage[];
-  imageUrl = environment.baseURL;
+  certificate:Certificate;
+  images:CertificateImage[];
+  imageUrl=environment.baseURL;
   selectedFile: ImageSnippet;
 
   constructor(private activatedRoute:ActivatedRoute,
-    private blogService:BlogService,
-    private imageService: BlogImageService,
+    private certificateService:CertificateService,
+    private imageService: CertificateImageService,
     private toastr: ToastrService,
     private router:Router) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
       if(params["id"]){
-        this.getBlogDetails(params["id"]);
-        this.getBlogImagesByBlogId(params["id"]);
+        this.getCertificateDetails(params["id"]);
+        this.getCertificateImagesByCertificateId(params["id"]);
       }
     })
   }
 
-  getBlogDetails(id:number)
-  {
-    this.blogService.getById(id).subscribe(response => {
-      this.blog = response.data;
+  getCertificateDetails(id:number){
+    this.certificateService.getCertificate(id).subscribe(response => {
+      this.certificate = response.data;
     })
   }
 
-  getBlogImagesByBlogId(id:number){
-    this.imageService.getImagesByBlogId(id).subscribe(response=>{
-     this.images=response.data;
-    })
-     
+  getCertificateImagesByCertificateId(id:number){
+    this.imageService.getImagesByCertificateId(id).subscribe(response=>{
+      this.images=response.data;
+     })
+
   }
 
   getSliderClassName(index:Number){
@@ -77,13 +75,13 @@ export class BlogImageAddComponent implements OnInit {
   processFile(imageInput: any) {
       const file: File = imageInput.files[0];
       const reader = new FileReader();
-      console.log(this.blog.id)
+      console.log(this.certificate.id)
   
       reader.addEventListener('load', (event: any) => {
   
         this.selectedFile = new ImageSnippet(event.target.result, file);
         this.selectedFile.pending = true;
-        this.imageService.add(this.selectedFile.file,this.blog.id).subscribe((response) => {
+        this.imageService.add(this.selectedFile.file,this.certificate.id).subscribe((response) => {
             this.onSuccess();
             window.location.reload()     
           },error => {
@@ -98,4 +96,5 @@ export class BlogImageAddComponent implements OnInit {
       });
       reader.readAsDataURL(file);
     }
+
 }

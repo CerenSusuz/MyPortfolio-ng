@@ -35,13 +35,11 @@ export class ProjectAddComponent implements OnInit {
       let projectModel = Object.assign({},this.projectAddForm.value)
       console.log(projectModel)
       this.projectService.add(projectModel).subscribe(response=>{
-        this.toastrService.success("OK")
+        this.toastrService.success("OK admin")
         this.router.navigate(['/admin']);
       },responseError=>{
-        this.toastrService.info("Good Job admin")
+        this.toastrService.error("Error")
       })
-    }else{
-      this.toastrService.error('ERROR')
     }
   }
 

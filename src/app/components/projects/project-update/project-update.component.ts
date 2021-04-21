@@ -62,9 +62,7 @@ export class ProjectUpdateComponent implements OnInit {
       },responseError=>{
         this.toastr.error(responseError.error)
       })
-    }else{
-      this.toastr.error("UPDATE ERROR")
-    }    
+    }   
 
   }
 

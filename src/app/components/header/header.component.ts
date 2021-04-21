@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -7,11 +10,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService:AuthService,
+    private toastr:ToastrService,
+    private router:Router) { }
 
   ngOnInit(): void {
     
   }
 
-  
+  isLogOK(){
+    if(sessionStorage.getItem("token")){
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  getUser(){
+    return sessionStorage.getItem('fullName');
+    }
+
+  logout(){
+    this.authService.logOut();
+    this.toastr.info("Log OUT OK");
+    this.router.navigate(['/homepage']);
+  }
 }

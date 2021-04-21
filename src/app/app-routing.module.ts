@@ -5,6 +5,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { BlogDetaillComponent } from './components/blogs/blog-detaill/blog-detaill.component';
 import { CertificateDetailComponent } from './components/certificate/certificate-detail/certificate-detail.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { EditInfoComponent } from './components/edit-info/edit-info.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path:"admin",component:AdminComponent},
   {path:"certificates/details/:certificateId",component:CertificateDetailComponent},
   {path:"blogs/details/:blogId",component:BlogDetaillComponent},
+  {path:"user/edit",component:EditInfoComponent}
 ];
 
 @NgModule({

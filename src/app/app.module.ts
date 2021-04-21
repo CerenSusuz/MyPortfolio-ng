@@ -23,6 +23,7 @@ import { CertificateComponent } from './components/certificate/certificate-list/
 import { BlogDetaillComponent } from './components/blogs/blog-detaill/blog-detaill.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { CertificateDetailComponent } from './components/certificate/certificate-detail/certificate-detail.component';
+import { EditInfoComponent } from './components/edit-info/edit-info.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { CertificateDetailComponent } from './components/certificate/certificate
     CertificateComponent,
     BlogDetaillComponent,
     AdminComponent,
-    CertificateDetailComponent
+    CertificateDetailComponent,
+    EditInfoComponent
   ],
   imports: [
     BrowserModule,

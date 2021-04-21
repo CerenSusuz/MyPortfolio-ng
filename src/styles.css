@@ -276,8 +276,10 @@ a img.aligncenter {
     HEADER
 -------------------------------------------------------------------*/
 nav{
-background-color: white;
+    opacity: 0.8;
+    background-color: white;
 }
+
 .navbar-light .navbar-nav .nav-link{
 	color: #1b1a1a;
 	letter-spacing: 1px;
@@ -305,9 +307,7 @@ background-color: white;
     transition: all .5s;
     z-index: -1;
 }
-.navbar-dark .navbar-nav .nav-link.active::after {
-	width: 50%;
-}
+
 
 /*------------------------------------------------------------------
     SECTIONS

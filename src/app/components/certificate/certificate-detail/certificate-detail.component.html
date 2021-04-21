@@ -1,0 +1,17 @@
+<div *ngIf="certificate" >
+        <div class="col-md-4">
+            <div class="gallery-list" >
+                <div class="gallery-grid gal_a gal_b">
+                    <div class="gallery-single fix ">
+                        <img id="image" src="{{ imageUrl }}/{{ images[0].imagePath }}" class="img-fluid " alt="Image">
+                    </div>
+                    <div class="text-center">
+                        <h4>{{certificate.title}}</h4>
+                        <span>{{ certificate.receivedDate | date:'dd-MM-yyyy'}}</span>
+                    </div>
+                </div>
+    
+            </div>
+    
+        </div>
+    </div>

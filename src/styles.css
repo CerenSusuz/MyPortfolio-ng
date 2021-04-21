@@ -1,9 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
 * {
     font-size: 14px;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     line-height: 1.80857;
 }
+
+.cursorPointer{
+    cursor: pointer;
+}
+
 
 html, body{
 	height: 100%;
@@ -2433,3 +2437,5 @@ select.mobile-device {
     border-color: rgba(255, 255, 255, 0.6);
     color: rgba(255, 255, 255, 0.6);
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

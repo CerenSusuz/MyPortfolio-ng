@@ -1,0 +1,29 @@
+<!-- Certificates -->
+
+<div id="certificate" class="section lb">
+  <div class="container">
+    <div class="section-title text-left">
+      <h3>Certificates</h3>
+    </div>
+
+    <div *ngIf="certificates" class="row">
+      <div *ngFor="let certificate of certificates" class="col-md-3 col-sm-6 col-lg-4">
+        <div class="gallery-list row" >
+          <div class="gallery-grid gal_a gal_b">
+            <div class="gallery-single fix"  >
+              <img src="assets/img/computer.png" class="img-fluid" alt="Image">
+            </div>
+            <div class="text-center">
+              <h4>{{certificate.title}}</h4>
+              <span>{{ certificate.receivedDate | date:'dd-MM-yyyy'}}</span>
+            </div>
+          </div>
+
+        </div>
+        <button type="button" class="btn btn-warning float-end" routerLink = "/certificates/details/{{certificate.id}}">Show Certificate</button>
+      </div>
+
+    </div>
+    
+  </div>
+</div>

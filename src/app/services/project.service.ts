@@ -34,7 +34,7 @@ export class ProjectService {
   }
 
   getProjectDetail(projectId:number):Observable<ItemResponseModel<Project>>{
-    let newPath = this.apiURL + 'cars/getbyid?id='+projectId;
+    let newPath = this.apiURL + 'projects/getbyid?id='+projectId;
     return this.httpClient.get<ItemResponseModel<Project>>(newPath)
   }
 

@@ -1,0 +1,122 @@
+<div *ngIf="!projects" class="alert alert-info w-100" role="alert">
+    Not exist projects
+  </div>
+  <div *ngIf="!blogs" class="alert alert-info w-100" role="alert">
+    Not exist blogs
+  </div>
+  <div *ngIf="!certificates" class="alert alert-info w-100" role="alert">
+    Not exist certificates
+  </div> 
+
+  <!-- Projects -->
+  <div class="mt-5 pt-5">
+    <table *ngIf="projects" class="table m-5">
+      <thead>
+        <h4 class="mt-4">Projects</h4>
+        <tr>
+          <th scope="col" style="background-color: rgb(174, 204, 214); border-radius: 10px">ID</th>
+          <th scope="col" style="background-color: rgb(174, 204, 214); border-radius: 10px">createdAt</th>
+          <th scope="col" style="background-color: rgb(174, 204, 214); border-radius: 10px">updatedAt</th>
+          <th scope="col" style="background-color: rgb(174, 204, 214); border-radius: 10px">isDeleted</th>
+          <th scope="col" style="background-color: rgb(174, 204, 214); border-radius: 10px">isActive</th>
+          <th scope="col" style="background-color: rgb(164, 221, 240); border-radius: 10px">Title</th>
+          <th scope="col" style="background-color: rgb(148, 199, 218); border-radius: 10px">Description</th>
+          <th scope="col" style="background-color: rgb(146, 214, 236); border-radius: 10px">Content</th>
+          <th scope="col" style="background-color: rgb(116, 207, 238); border-radius: 10px">Link</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let project of projects" (click)="setCurrentProject(project)" 
+          [class]="getProjectClass(project)">
+          <td>{{ project.id}}</td>
+          <td>{{ project.createdAt | date:'dd-MM-yyyy'}}</td>
+          <td>{{ project.updatedAt | date:'dd-MM-yyyy'}}</td>
+          <td>{{ project.isDeleted }}</td>
+          <td>{{ project.isActive }}</td>
+          <td>{{ project.title }}</td>
+          <td>{{ project.description }}</td>
+          <td>{{ project.content }}</td>
+          <td>{{ project.link }}</td>
+          <td><button type="button" class="btn btn-outline-success btn-sm">UPDATE</button></td>
+          <td><button type="button" class="btn btn-outline-info btn-sm">ADD IMAGE/IMAGES</button></td>
+          <td><button type="button" class="btn btn-outline-danger btn-sm">DELETE</button></td>
+        </tr>
+        <tr scope="col"><button type="button" class="btn btn-outline-warning m-2 ">ADD NEW</button></tr>
+      </tbody>
+    </table>
+  </div>
+
+<!-- Blogs -->
+  <div class="mt-1 pt-1">
+    <table *ngIf="blogs" class="table m-5">
+      <thead>
+        <h4 class="mt-4">Blogs</h4>
+        <tr>
+          <th scope="col" style="background-color: rgb(174, 204, 214); border-radius: 10px">ID</th>
+          <th scope="col" style="background-color: rgb(174, 204, 214); border-radius: 10px">createdAt</th>
+          <th scope="col" style="background-color: rgb(174, 204, 214); border-radius: 10px">updatedAt</th>
+          <th scope="col" style="background-color: rgb(174, 204, 214); border-radius: 10px">isDeleted</th>
+          <th scope="col" style="background-color: rgb(174, 204, 214); border-radius: 10px">isActive</th>
+          <th scope="col" style="background-color: rgb(164, 221, 240); border-radius: 10px">Title</th>
+          <th scope="col" style="background-color: rgb(148, 199, 218); border-radius: 10px">Description</th>
+          <th scope="col" style="background-color: rgb(146, 214, 236); border-radius: 10px">Content</th>
+          <th scope="col" style="background-color: rgb(146, 214, 236); border-radius: 10px">publishedDate</th>
+          <th scope="col" style="background-color: rgb(116, 207, 238); border-radius: 10px">SubjectId</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let blog of blogs" (click)="setCurrentBlog(blog)" 
+          [class]="getBlogClass(blog)">
+          <td>{{ blog.id}}</td>
+          <td>{{ blog.createdAt | date:'dd-MM-yyyy'}}</td>
+          <td>{{ blog.updatedAt | date:'dd-MM-yyyy'}}</td>
+          <td>{{ blog.isDeleted }}</td>
+          <td>{{ blog.isActive }}</td>
+          <td>{{ blog.title }}</td>
+          <td>{{ blog.description }}</td>
+          <td>{{ blog.content }}</td>
+          <td>{{ blog.publishedDate | date:'dd-MM-yyyy'}}</td>
+          <td><button type="button" class="btn btn-outline-success btn-sm">UPDATE</button></td>
+          <td><button type="button" class="btn btn-outline-info btn-sm">ADD IMAGE/IMAGES</button></td>
+          <td><button type="button" class="btn btn-outline-danger btn-sm">DELETE</button></td>
+        </tr>
+        <tr scope="col"><button type="button" class="btn btn-outline-warning m-2">ADD NEW</button></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Certificates -->
+  <div>
+    <table *ngIf="certificates" class="table m-5">
+      <thead>
+        <h4 class="mt-4">Certificates</h4>
+        <tr>
+          <th scope="col" style="background-color: rgb(174, 204, 214); border-radius: 10px">ID</th>
+          <th scope="col" style="background-color: rgb(174, 204, 214); border-radius: 10px">createdAt</th>
+          <th scope="col" style="background-color: rgb(174, 204, 214); border-radius: 10px">updatedAt</th>
+          <th scope="col" style="background-color: rgb(174, 204, 214); border-radius: 10px">isDeleted</th>
+          <th scope="col" style="background-color: rgb(174, 204, 214); border-radius: 10px">isActive</th>
+          <th scope="col" style="background-color: rgb(164, 221, 240); border-radius: 10px">Title</th>
+          <th scope="col" style="background-color: rgb(146, 214, 236); border-radius: 10px">Received Date</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let certificate of certificates" (click)="setCurrentCertificate(certificate)" 
+          [class]="getCertificateClass(certificate)">
+          <td>{{ certificate.id}}</td>
+          <td>{{ certificate.createdAt | date:'dd-MM-yyyy'}}</td>
+          <td>{{ certificate.updatedAt | date:'dd-MM-yyyy'}}</td>
+          <td>{{ certificate.isDeleted }}</td>
+          <td>{{ certificate.isActive }}</td>
+          <td>{{ certificate.title }}</td>
+          <td>{{ certificate.receivedDate | date:'dd-MM-yyyy'}}</td>
+          <td><button type="button" class="btn btn-outline-success btn-sm">UPDATE</button></td>
+          <td><button type="button" class="btn btn-outline-info btn-sm">ADD IMAGE/IMAGES</button></td>
+          <td><button type="button" class="btn btn-outline-danger btn-sm">DELETE</button></td>
+        </tr>
+        <tr scope="col"><button type="button" class="btn btn-outline-warning m-2">ADD NEW</button></tr>
+      </tbody>
+    </table>
+  </div>

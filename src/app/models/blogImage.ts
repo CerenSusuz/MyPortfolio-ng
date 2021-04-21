@@ -1,7 +1,7 @@
 export interface BlogImage{
     id:number;
     createdAt:Date;
-    updateAt:Date;
+    updatedAt:Date;
     isDeleted:boolean;
     isActive:boolean;
 

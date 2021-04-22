@@ -1,7 +1,8 @@
-<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top mt-2" id="mainNav">
   <div class="container">
+
     <a class="navbar-brand js-scroll-trigger">
-      <img routerLink="homepage" class="img-fluid" src="assets/img/logo.png" alt="logo" width="80px" />
+      <img routerLink="homepage" class="img-fluid" src="assets/img/logo.png" alt="logo" width="60px" />
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,7 +11,7 @@
     </button>
 
     <div class="collapse navbar-collapse ms-5 ps-5" id="navbarResponsive">
-      <ul class="navbar-nav text-uppercase ml-auto">
+      <ul class="navbar-nav text-uppercase ">
         <img class="img-fluid" src="assets/img/computer.png" alt="logo" width="40px" />
         <li class="nav-item"> 
           <a class="nav-link active" aria-current="page" routerLink="homepage">Home</a>
@@ -47,26 +48,25 @@
       </ul>
 
       <div *ngIf="!isLogOK()">
-        <form class="d-flex ms-4">
+        <form class="d-flex ms-5 ps-5">
           <div class="d-flex btn-group" role="group" aria-label="Basic radio toggle button group">
   
             <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off">
-            <label class="btn btn-outline-warning" routerLink="login" for="btnradio1">Log In</label>
+            <label class="btn btn-warning" routerLink="login" for="btnradio1">Log In</label>
   
             <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-            <label class="btn btn-outline-success" routerLink="signUp" for="btnradio2">Sign Up</label>
+            <label class="btn btn-success" routerLink="signUp" for="btnradio2">Sign Up</label>
 
           </div>
         </form>
       </div>
 
-
-        <div class="community-area" id="social-media">
+      <div class="community-area" id="social-media">
           <a href="https://www.linkedin.com/in/ceren-susuz-2a70841b3/"><i class="fab fa-linkedin ps-2"></i></a>
           <a href="https://github.com/CerenSusuz"><i class="fab fa-github ps-2"></i></a>
           <a href="https://twitter.com/cerennssz"><i class="fab fa-twitter ps-2"></i></a>
           <a href="https://www.instagram.com/cerensusuzz/"><i class="fab fa-instagram ps-2"></i></a>
-        </div>
+      </div>
   
     </div>
 

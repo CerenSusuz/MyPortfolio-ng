@@ -23,7 +23,7 @@ const routes: Routes = [
   {path:"",pathMatch:"full",component:HomepageComponent},
   {path:"homepage",pathMatch:"full",component:HomepageComponent},
   {path:"aboutMe",component:AboutMeComponent},
-  {path:"contact",component:ContactComponent},
+  // {path:"contact",component:ContactComponent},
   {path:"login",component:LoginComponent},
   {path:"register",component:SignUpComponent},
   {path:"signUp",component:SignUpComponent},

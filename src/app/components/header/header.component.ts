@@ -35,4 +35,6 @@ export class HeaderComponent implements OnInit {
     this.toastr.info("Log OUT OK");
     this.router.navigate(['/homepage']);
   }
+
+  
 }

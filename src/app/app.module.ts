@@ -34,6 +34,7 @@ import { ProjectUpdateComponent } from './components/projects/project-update/pro
 import { CertificateImageAddComponent } from './components/certificate/certificate-image-add/certificate-image-add.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,11 +72,13 @@ import { CertificateImageAddComponent } from './components/certificate/certifica
       positionClass: "toast-bottom-right"
     })
   ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: AuthInterceptor,
-    multi: true
-  }],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

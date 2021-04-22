@@ -19,9 +19,9 @@
         <li class="nav-item">
           <a class="nav-link" aria-current="page" routerLink="aboutMe">About Me</a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" aria-current="page" routerLink="contact">Contact Me</a>
-        </li>
+        </li> -->
 
         <div *ngIf="isLogOK() && getUser()">
           <ul class="navbar-nav me-auto ms-5 mb-lg-0 ">
@@ -39,7 +39,7 @@
               <li><a class="dropdown-item"><button class="btn btn-outline-danger" (click)="logout()">Log Out</button></a></li>
             </ul>
           </li>
-            <a class="nav-link" aria-current="page" routerLink="admin"><button class="btn btn-warning">Admin</button></a>
+            <a  class="nav-link" aria-current="page" routerLink="admin"><button class="btn btn-warning">Admin</button></a>
         </ul>
 
         </div>

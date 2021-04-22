@@ -17,6 +17,72 @@
     </div>
   </section>
 
+  <!-- Blog Images -->
+  <table *ngIf="blogImages" class="table">
+    <thead>
+      <h4>Blog Images</h4>
+      <tr>
+        <th>Image</th>
+        <th>ID</th>
+        <th>createdAt</th>
+        <th>updatedAt</th>
+        <th>isDeleted</th>
+        <th>isActive</th>
+        <th>Blog Id</th>
+        <th>Image Path</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let image of blogImages" (click)="setCurrentBlogImage(image)" 
+        [class]="getBlogImageClass(image)">
+        <td><img src="{{ imageUrl }}/{{ image.imagePath }}" class="d-block w-100" alt="blogImage" /></td>
+        <td>{{ image.id}}</td>
+        <td>{{ image.createdAt | date:'dd-MM-yyyy'}}</td>
+        <td>{{ image.updatedAt | date:'dd-MM-yyyy'}}</td>
+        <td>{{ image.isDeleted }}</td>
+        <td>{{ image.isActive }}</td>
+        <td>{{ image.blogId }}</td>
+        <td>{{ image.imagePath }}</td>
+        <td>{{ image.date }}</td>
+        <td><button type="button" class="btn btn-outline-danger btn-sm" (click)="deleteBlogImage(image)" >DELETE</button></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <!-- Certificate Images -->
+  <table *ngIf="certificateImages" class="table">
+    <thead>
+      <h4>Certificate Images</h4>
+      <tr>
+        <th>Image</th>
+        <th>ID</th>
+        <th>createdAt</th>
+        <th>updatedAt</th>
+        <th>isDeleted</th>
+        <th>isActive</th>
+        <th>Certificate Id</th>
+        <th>Image Path</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let image of certificateImages" (click)="setCurrentCertificateImage(image)" 
+        [class]="getCertificateImageClass(image)">
+        <td><img src="{{ imageUrl }}/{{ image.imagePath }}" class="d-block w-100" alt="certificateImage" /></td>
+        <td>{{ image.id}}</td>
+        <td>{{ image.createdAt | date:'dd-MM-yyyy'}}</td>
+        <td>{{ image.updatedAt | date:'dd-MM-yyyy'}}</td>
+        <td>{{ image.isDeleted }}</td>
+        <td>{{ image.isActive }}</td>
+        <td>{{ image.certificateId }}</td>
+        <td>{{ image.imagePath }}</td>
+        <td>{{ image.date }}</td>
+        <td><button type="button" class="btn btn-outline-danger btn-sm" (click)="deleteCertificateImage(image)" >DELETE</button></td>
+      </tr>
+    </tbody>
+  </table>
+
   <!-- Projects -->
     <table *ngIf="projects" class="table">
       <thead>
@@ -90,7 +156,6 @@
     </table>
 
   <!-- Certificates -->
-  <div>
     <table *ngIf="certificates" class="table">
       <thead>
         <h4>Certificates</h4>
@@ -122,4 +187,3 @@
         <tr scope="col"><button type="button" class="btn btn-outline-warning m-2" routerLink="/certificate/add">ADD NEW</button></tr>
       </tbody>
     </table>
-  </div>

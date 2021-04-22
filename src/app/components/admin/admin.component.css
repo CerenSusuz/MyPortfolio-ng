@@ -7,4 +7,6 @@ h4{
 .table{
     width: 15px;
     overflow: hidden;
+    border:2px solid orangered;
 }
+

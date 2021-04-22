@@ -39,7 +39,7 @@
               <li><a class="dropdown-item"><button class="btn btn-outline-danger" (click)="logout()">Log Out</button></a></li>
             </ul>
           </li>
-            <a  class="nav-link" aria-current="page" routerLink="admin"><button class="btn btn-warning">Admin</button></a>
+            <a *ngIf="isAdmin()" class="nav-link" aria-current="page" routerLink="admin"><button class="btn btn-warning">Admin</button></a>
         </ul>
 
         </div>

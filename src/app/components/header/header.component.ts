@@ -36,5 +36,12 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/homepage']);
   }
 
+  isAdmin(){
+    if(sessionStorage.getItem("email")==="ceren199704@hotmail.com"){
+      return true;
+    }else{
+      return false;
+    }
+  }  
   
 }

@@ -1,11 +1,17 @@
+import { CoreEnvironment } from '@angular/compiler/src/compiler_facade_interface';
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Blog } from 'src/app/models/blog';
+import { BlogImage } from 'src/app/models/blogImage';
 import { Certificate } from 'src/app/models/certificate';
+import { CertificateImage } from 'src/app/models/certificateImage';
 import { Project } from 'src/app/models/project';
+import { BlogImageService } from 'src/app/services/blog-images.service';
 import { BlogService } from 'src/app/services/blog.service';
+import { CertificateImageService } from 'src/app/services/certificate-images.service';
 import { CertificateService } from 'src/app/services/certificate.service';
 import { ProjectService } from 'src/app/services/project.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-admin',
@@ -19,22 +25,110 @@ export class AdminComponent implements OnInit {
 
   blogs:Blog[];
   currentBlog:Blog;
+  blogImages:BlogImage[];
+  currentBlogImage:BlogImage;
 
   certificates:Certificate[];
   currentCertificate:Certificate;
+  certificateImages:CertificateImage[];
+  currentCertificateImage:CertificateImage;
+
+  imageUrl=environment.baseURL;
 
 
   constructor(private projectService:ProjectService,
     private blogService:BlogService,
     private certificateService:CertificateService,
-    private toastrService:ToastrService
+    private toastrService:ToastrService,
+    private blogImagesService:BlogImageService,
+    private certificateImageService:CertificateImageService
+    
     ) { }
 
   ngOnInit(): void {
     this.getProjects();
     this.getBlogs();
-    this.getCertificates()
+    this.getCertificates();
+    this.getBlogImages();
+    this.getCertificateImages();
   }
+
+  //Blog Images
+
+  getBlogImages(){
+    this.blogImagesService.getAll().subscribe(response=>{
+      this.blogImages=response.data;
+    })
+  }
+
+  setCurrentBlogImage(blogImage:BlogImage){
+    this.currentBlogImage=blogImage;
+  }
+
+  getBlogImageClass(blogImage:BlogImage){
+    if(blogImage==this.currentBlogImage){
+      return "table-info cursorPointer"
+    }else{
+      return "cursorPointer"
+    }
+  }
+
+  deleteBlogImage(blogImage:BlogImage){
+    console.log(blogImage)
+    let blogImageModel:BlogImage={
+      id:blogImage.id,
+      isActive:blogImage.isActive,
+      createdAt:blogImage.createdAt,
+      blogId:blogImage.blogId,
+      date:blogImage.date,
+      imagePath:blogImage.imagePath
+    }
+    this.blogImagesService.delete(blogImageModel).subscribe(response=>{
+      this.toastrService.success("DELETE OK")
+      window.location.reload()
+    },responseError=>{
+      this.toastrService.error("ERRROR")
+    })
+  }
+
+    //Certificate Images
+
+    getCertificateImages(){
+      this.certificateImageService.getAll().subscribe(response=>{
+        this.certificateImages=response.data;
+      })
+    }
+  
+    setCurrentCertificateImage(certificateImage:CertificateImage){
+      this.currentCertificateImage=certificateImage;
+    }
+  
+    getCertificateImageClass(certificateImage:CertificateImage){
+      if(certificateImage==this.currentCertificateImage){
+        return "table-info cursorPointer"
+      }else{
+        return "cursorPointer"
+      }
+    }
+  
+    deleteCertificateImage(certificateImage:CertificateImage){
+      let certificateImageModel:BlogImage={
+        id:certificateImage.id,
+        isActive:certificateImage.isActive,
+        createdAt:certificateImage.createdAt,
+        blogId:certificateImage.certificateId,
+        date:certificateImage.date,
+        imagePath:certificateImage.imagePath
+      }
+      this.blogImagesService.delete(certificateImageModel).subscribe(response=>{
+        this.toastrService.success("DELETE OK")
+        window.location.reload()
+      },responseError=>{
+        this.toastrService.error("ERRROR")
+      })
+    }
+
+  //Projects
 
   getProjects(){
     this.projectService.getProjects().subscribe(response=>{
@@ -54,6 +148,26 @@ export class AdminComponent implements OnInit {
     }
   }
 
+  deleteProject(project:Project){
+    let projectModel:Project={
+      id:project.id,
+      isActive:project.isActive,
+      createdAt:project.createdAt,
+      title:project.title,
+      content:project.content,
+      description:project.description,
+      link:project.link
+    }
+    this.projectService.delete(projectModel).subscribe(response=>{
+      this.toastrService.success("DELETE OK")
+      window.location.reload()
+    },responseError=>{
+      this.toastrService.error("ERRROR")
+    })
+  }
+
+  //Blogs
+
   getBlogs(){
     this.blogService.getAll().subscribe(response=>{
      this.blogs=response.data;
@@ -66,24 +180,6 @@ export class AdminComponent implements OnInit {
 
   getBlogClass(blog:Blog){
     if(blog==this.currentBlog){
-      return "table-info cursorPointer"
-    }else{
-      return "cursorPointer"
-    }
-  }
-
-  getCertificates(){
-    this.certificateService.getCertificates().subscribe(response=>{
-     this.certificates=response.data;
-    })
-  }
-
-  setCurrentCertificate(certificate:Certificate){
-    this.currentCertificate=certificate;
-  }
-
-  getCertificateClass(certificate:Certificate){
-    if(certificate==this.currentCertificate){
       return "table-info cursorPointer"
     }else{
       return "cursorPointer"
@@ -108,22 +204,24 @@ export class AdminComponent implements OnInit {
     })
   }
 
-  deleteProject(project:Project){
-    let projectModel:Project={
-      id:project.id,
-      isActive:project.isActive,
-      createdAt:project.createdAt,
-      title:project.title,
-      content:project.content,
-      description:project.description,
-      link:project.link
-    }
-    this.projectService.delete(projectModel).subscribe(response=>{
-      this.toastrService.success("DELETE OK")
-      window.location.reload()
-    },responseError=>{
-      this.toastrService.error("ERRROR")
+  // Certificates
+
+  getCertificates(){
+    this.certificateService.getCertificates().subscribe(response=>{
+     this.certificates=response.data;
     })
+  }
+
+  setCurrentCertificate(certificate:Certificate){
+    this.currentCertificate=certificate;
+  }
+
+  getCertificateClass(certificate:Certificate){
+    if(certificate==this.currentCertificate){
+      return "table-info cursorPointer"
+    }else{
+      return "cursorPointer"
+    }
   }
 
   deleteCertificate(certificate:Certificate){
@@ -141,6 +239,10 @@ export class AdminComponent implements OnInit {
       this.toastrService.error("ERRROR")
     })
   }
+
+
+
+
 
 
 }

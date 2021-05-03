@@ -19,7 +19,6 @@ export class BlogsComponent implements OnInit {
   getBlogs(){
     this.blogService.getAll().subscribe(response=>{
       this.blogs=response.data;
-      console.log(this.blogs);
     })
   }
 

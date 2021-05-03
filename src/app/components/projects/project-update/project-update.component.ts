@@ -14,6 +14,7 @@ export class ProjectUpdateComponent implements OnInit {
 
   projectUpdateForm:FormGroup;
   project:Project;
+  
   constructor(
     private formBuilder:FormBuilder,
     private projectService:ProjectService,

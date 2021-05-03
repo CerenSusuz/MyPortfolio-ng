@@ -2,7 +2,6 @@ export interface Project{
     id:number;
     createdAt:Date;
     updatedAt?:Date;
-    isDeleted?:boolean;
     isActive:boolean;
 
     title:string;

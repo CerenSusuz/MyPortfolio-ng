@@ -1,0 +1,7 @@
+<div class="section lb">
+    <div class="container">
+        <div *ngIf="subjects" class="subjects">
+                <a *ngFor="let subject of subjects" routerLink="/blogsofsubjects/{{subject.id}}">{{ subject.name }}&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+    </div>
+</div>

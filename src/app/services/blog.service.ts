@@ -37,4 +37,8 @@ export class BlogService {
     return this.httpClient.get<ItemResponseModel<Blog>>(newPath)
   }
 
+  getBySubjectId(id:number):Observable<ListResponseModel<Blog>>{
+    let newPath = this.apiURL+"blogs/getbysubjectid?id="+id;
+    return this.httpClient.get<ListResponseModel<Blog>>(newPath)
+  }
 }

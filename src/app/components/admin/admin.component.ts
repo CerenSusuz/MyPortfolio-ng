@@ -5,11 +5,13 @@ import { Blog } from 'src/app/models/blog';
 import { BlogImage } from 'src/app/models/blogImage';
 import { Certificate } from 'src/app/models/certificate';
 import { CertificateImage } from 'src/app/models/certificateImage';
+import { Comment } from 'src/app/models/comment';
 import { Project } from 'src/app/models/project';
 import { BlogImageService } from 'src/app/services/blog-images.service';
 import { BlogService } from 'src/app/services/blog.service';
 import { CertificateImageService } from 'src/app/services/certificate-images.service';
 import { CertificateService } from 'src/app/services/certificate.service';
+import { CommentService } from 'src/app/services/comment.service';
 import { ProjectService } from 'src/app/services/project.service';
 import { environment } from 'src/environments/environment';
 
@@ -33,6 +35,9 @@ export class AdminComponent implements OnInit {
   certificateImages:CertificateImage[];
   currentCertificateImage:CertificateImage;
 
+  comments:Comment[];
+  currentComment:Comment;
+
   imageUrl=environment.baseURL;
 
 
@@ -41,7 +46,9 @@ export class AdminComponent implements OnInit {
     private certificateService:CertificateService,
     private toastrService:ToastrService,
     private blogImagesService:BlogImageService,
-    private certificateImageService:CertificateImageService
+    private certificateImageService:CertificateImageService,
+    private commentService:CommentService
+
     
     ) { }
 
@@ -51,6 +58,7 @@ export class AdminComponent implements OnInit {
     this.getCertificates();
     this.getBlogImages();
     this.getCertificateImages();
+    this.getComments();
   }
 
   //Blog Images
@@ -81,7 +89,7 @@ export class AdminComponent implements OnInit {
       createdAt:blogImage.createdAt,
       blogId:blogImage.blogId,
       date:blogImage.date,
-      imagePath:blogImage.imagePath
+      imagePath:blogImage.imagePath,
     }
     this.blogImagesService.delete(blogImageModel).subscribe(response=>{
       this.toastrService.success("DELETE OK")
@@ -112,15 +120,15 @@ export class AdminComponent implements OnInit {
     }
   
     deleteCertificateImage(certificateImage:CertificateImage){
-      let certificateImageModel:BlogImage={
+      let certificateImageModel:CertificateImage={
         id:certificateImage.id,
         isActive:certificateImage.isActive,
         createdAt:certificateImage.createdAt,
-        blogId:certificateImage.certificateId,
+        certificateId:certificateImage.certificateId,
         date:certificateImage.date,
         imagePath:certificateImage.imagePath
       }
-      this.blogImagesService.delete(certificateImageModel).subscribe(response=>{
+      this.certificateImageService.delete(certificateImageModel).subscribe(response=>{
         this.toastrService.success("DELETE OK")
         window.location.reload()
       },responseError=>{
@@ -194,7 +202,8 @@ export class AdminComponent implements OnInit {
       title:blog.title,
       content:blog.content,
       description:blog.description,
-      publishedDate:blog.publishedDate
+      publishedDate:blog.publishedDate,
+      subjectId:blog.subjectId
     }
     this.blogService.delete(blogModel).subscribe(response=>{
       this.toastrService.success("DELETE OK")
@@ -240,8 +249,43 @@ export class AdminComponent implements OnInit {
     })
   }
 
+  //Comments
 
+  getComments(){
+    this.commentService.getComments().subscribe(response=>{
+     this.comments=response.data;
+    })
+  }
 
+  setCurrentComment(comment:Comment){
+    this.currentComment=comment;
+  }
+
+  getCommentClass(comment:Comment){
+    if(comment==this.currentComment){
+      return "table-info cursorPointer"
+    }else{
+      return "cursorPointer"
+    }
+  }
+
+  deleteComment(comment:Comment){
+    let commentModel:Comment={
+      id:comment.id,
+      blogId:comment.blogId,
+      blog:comment.blog,
+      user:comment.user,
+      userId:comment.userId,
+      writtenDate:comment.writtenDate,
+      content:comment.content
+    }
+    this.commentService.delete(commentModel).subscribe(response=>{
+      this.toastrService.success("DELETE OK")
+      window.location.reload()
+    },responseError=>{
+      this.toastrService.error("ERRROR")
+    })
+  }
 
 
 

@@ -34,7 +34,18 @@
           <div class="mb-3">
             <label for="content">content</label>
             <div class="form-group">
-              <input type="text" id="content" class="form-control" formControlName="content" />
+              <textarea type="text"  rows="4" cols="50" id="content" class="form-control" formControlName="content">enter here</textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="mb-3">
+            <label for="content">subject</label>
+            <div class="form-group">
+              <select id="subjectId" class="form-select" formControlName="subjectId">
+                <option [ngValue]="subject.id" *ngFor="let subject of subjects">{{ subject.name }}</option>
+              </select>
             </div>
           </div>
         </div>

@@ -37,7 +37,7 @@ export class HeaderComponent implements OnInit {
   }
 
   isAdmin(){
-    if(sessionStorage.getItem("email")==="ceren199704@hotmail.com"){
+    if(sessionStorage.getItem("claim")==="admin"){
       return true;
     }else{
       return false;

@@ -1,17 +1,32 @@
-<div *ngIf="certificate" >
-        <div class="col-md-4">
-            <div class="gallery-list" >
-                <div class="gallery-grid gal_a gal_b">
-                    <div class="gallery-single fix ">
-                        <img id="image" src="{{ imageUrl }}/{{ images[0].imagePath }}" class="img-fluid " alt="Image">
-                    </div>
-                    <div class="text-center">
-                        <h4>{{certificate.title}}</h4>
-                        <span>{{ certificate.receivedDate | date:'dd-MM-yyyy'}}</span>
-                    </div>
-                </div>
-    
-            </div>
-    
-        </div>
+<div *ngIf="certificate">
+  <div class="gallery-list">
+    <div *ngFor="let image of images; let i = index" class="gallery-grid gal_a gal_b mt-4">
+      <img src="{{ imageUrl }}/{{ image.imagePath }}" class="d-block w-100" width="800" height="400" alt="blogImage" />
     </div>
+
+    <div class="row">
+
+      <table class="table mt-4">
+        <thead>
+          <tr>
+            <th scope="col" style="background-color: rgb(174, 204, 214); border-radius: 10px">
+              title
+            </th>
+            <th scope="col" style="background-color: rgb(130, 207, 233); border-radius: 10px">
+              receivedDate
+            </th>
+
+          </tr>
+
+        </thead>
+        <tbody>
+          <tr *ngIf="certificate">
+            <td>{{ certificate.title | uppercase}}</td>
+            <td>{{ certificate.receivedDate }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>

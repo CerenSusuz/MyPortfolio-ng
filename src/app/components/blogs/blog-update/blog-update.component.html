@@ -38,7 +38,17 @@
               </div>
             </div>
           </div>
-    
+
+          <div class="row">
+            <div class="mb-3">
+              <label for="subject">subject</label>
+              <div class="form-group">
+                <select id="subjectId" class="form-select" formControlName="subjectId">
+                  <option [ngValue]="subject.id" *ngFor="let subject of subjects">{{ subject.name }}</option>
+                </select>
+              </div>
+            </div>
+          </div>
     
         </form>
     

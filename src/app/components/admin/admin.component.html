@@ -1,189 +1,211 @@
 <div *ngIf="!projects" class="alert alert-info w-100" role="alert">
-    Not exist projects
-  </div>
-  <div *ngIf="!blogs" class="alert alert-info w-100" role="alert">
-    Not exist blogs
-  </div>
-  <div *ngIf="!certificates" class="alert alert-info w-100" role="alert">
-    Not exist certificates
-  </div> 
+  Not exist projects
+</div>
+<div *ngIf="!blogs" class="alert alert-info w-100" role="alert">
+  Not exist blogs
+</div>
+<div *ngIf="!certificates" class="alert alert-info w-100" role="alert">
+  Not exist certificates
+</div>
 
-  <section class="main-banner parallaxie mb-4" style="background: url('assets/img/logo.png')">
-    <div class="heading">
-      <div class="jumbotron text-center " style="border-radius: 20px;">
-        &nbsp;
-        <h2 style="color: darkgray; font-size: 42px; font-weight: 900;">Admin Page</h2>
-      </div>
+<section class="main-banner parallaxie mb-4" style="background: url('assets/img/logo.png')">
+  <div class="heading">
+    <div class="jumbotron text-center " style="border-radius: 20px;">
+      &nbsp;
+      <h2 style="color: darkgray; font-size: 42px; font-weight: 900;">Admin Page</h2>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Blog Images -->
-  <table *ngIf="blogImages" class="table">
-    <thead>
-      <h4>Blog Images</h4>
-      <tr>
-        <th>Image</th>
-        <th>ID</th>
-        <th>createdAt</th>
-        <th>updatedAt</th>
-        <th>isDeleted</th>
-        <th>isActive</th>
-        <th>Blog Id</th>
-        <th>Image Path</th>
-        <th>Date</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let image of blogImages" (click)="setCurrentBlogImage(image)" 
-        [class]="getBlogImageClass(image)">
-        <td><img src="{{ imageUrl }}/{{ image.imagePath }}" class="d-block w-100" alt="blogImage" /></td>
-        <td>{{ image.id}}</td>
-        <td>{{ image.createdAt | date:'dd-MM-yyyy'}}</td>
-        <td>{{ image.updatedAt | date:'dd-MM-yyyy'}}</td>
-        <td>{{ image.isDeleted }}</td>
-        <td>{{ image.isActive }}</td>
-        <td>{{ image.blogId }}</td>
-        <td>{{ image.imagePath }}</td>
-        <td>{{ image.date }}</td>
-        <td><button type="button" class="btn btn-outline-danger btn-sm" (click)="deleteBlogImage(image)" >DELETE</button></td>
-      </tr>
-    </tbody>
-  </table>
-  
-  <!-- Certificate Images -->
-  <table *ngIf="certificateImages" class="table">
-    <thead>
-      <h4>Certificate Images</h4>
-      <tr>
-        <th>Image</th>
-        <th>ID</th>
-        <th>createdAt</th>
-        <th>updatedAt</th>
-        <th>isDeleted</th>
-        <th>isActive</th>
-        <th>Certificate Id</th>
-        <th>Image Path</th>
-        <th>Date</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let image of certificateImages" (click)="setCurrentCertificateImage(image)" 
-        [class]="getCertificateImageClass(image)">
-        <td><img src="{{ imageUrl }}/{{ image.imagePath }}" class="d-block w-100" alt="certificateImage" /></td>
-        <td>{{ image.id}}</td>
-        <td>{{ image.createdAt | date:'dd-MM-yyyy'}}</td>
-        <td>{{ image.updatedAt | date:'dd-MM-yyyy'}}</td>
-        <td>{{ image.isDeleted }}</td>
-        <td>{{ image.isActive }}</td>
-        <td>{{ image.certificateId }}</td>
-        <td>{{ image.imagePath }}</td>
-        <td>{{ image.date }}</td>
-        <td><button type="button" class="btn btn-outline-danger btn-sm" (click)="deleteCertificateImage(image)" >DELETE</button></td>
-      </tr>
-    </tbody>
-  </table>
+<!-- Blog Images -->
+<table *ngIf="blogImages" class="table">
+  <thead>
+    <h4>Blog Images</h4>
+    <tr>
+      <th>Image</th>
+      <th>ID</th>
+      <th>createdAt</th>
+      <th>updatedAt</th>
+      <th>isActive</th>
+      <th>Blog Id</th>
+      <th>Image Path</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let image of blogImages" (click)="setCurrentBlogImage(image)" [class]="getBlogImageClass(image)">
+      <td><img src="{{ imageUrl }}/{{ image.imagePath }}" class="d-block w-100" alt="blogImage" /></td>
+      <td>{{ image.id}}</td>
+      <td>{{ image.createdAt | date:'dd-MM-yyyy'}}</td>
+      <td>{{ image.updatedAt | date:'dd-MM-yyyy'}}</td>
+      <td>{{ image.isActive }}</td>
+      <td>{{ image.blogId }}</td>
+      <td>{{ image.imagePath }}</td>
+      <td>{{ image.date }}</td>
+      <td><button type="button" class="btn btn-outline-danger btn-sm" (click)="deleteBlogImage(image)">DELETE</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-  <!-- Projects -->
-    <table *ngIf="projects" class="table">
-      <thead>
-        <h4>Projects</h4>
-        <tr>
-          <th>ID</th>
-          <th>createdAt</th>
-          <th>updatedAt</th>
-          <th>isDeleted</th>
-          <th>isActive</th>
-          <th>Title</th>
-          <th>Description</th>
-          <th>Content</th>
-          <th>Link</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let project of projects" (click)="setCurrentProject(project)" 
-          [class]="getProjectClass(project)">
-          <td>{{ project.id}}</td>
-          <td>{{ project.createdAt | date:'dd-MM-yyyy'}}</td>
-          <td>{{ project.updatedAt | date:'dd-MM-yyyy'}}</td>
-          <td>{{ project.isDeleted }}</td>
-          <td>{{ project.isActive }}</td>
-          <td>{{ project.title }}</td>
-          <td>{{ project.description }}</td>
-          <td>{{ project.content }}</td>
-          <td>{{ project.link }}</td>
-          <td><button type="button" class="btn btn-outline-success btn-sm" routerLink="/project/update/{{project.id}}">UPDATE</button></td>
-          <td><button type="button" class="btn btn-outline-danger btn-sm" (click)="deleteProject(project)" >DELETE</button></td>
-        </tr>
-        <tr scope="col"><button type="button" class="btn btn-outline-warning m-2 " routerLink="/project/add">ADD NEW</button></tr>
-      </tbody>
-    </table>
+<!-- Certificate Images -->
+<table *ngIf="certificateImages" class="table">
+  <thead>
+    <h4>Certificate Images</h4>
+    <tr>
+      <th>Image</th>
+      <th>ID</th>
+      <th>createdAt</th>
+      <th>updatedAt</th>
+      <th>isActive</th>
+      <th>Certificate Id</th>
+      <th>Image Path</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let image of certificateImages" (click)="setCurrentCertificateImage(image)"
+      [class]="getCertificateImageClass(image)">
+      <td><img src="{{ imageUrl }}/{{ image.imagePath }}" class="d-block w-100" alt="certificateImage" /></td>
+      <td>{{ image.id}}</td>
+      <td>{{ image.createdAt | date:'dd-MM-yyyy'}}</td>
+      <td>{{ image.updatedAt | date:'dd-MM-yyyy'}}</td>
+      <td>{{ image.isActive }}</td>
+      <td>{{ image.certificateId }}</td>
+      <td>{{ image.imagePath }}</td>
+      <td>{{ image.date }}</td>
+      <td><button type="button" class="btn btn-outline-danger btn-sm"
+          (click)="deleteCertificateImage(image)">DELETE</button></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Projects -->
+<table class="table">
+  <thead>
+    <h4>Projects</h4>
+    <tr>
+      <th>ID</th>
+      <th>createdAt</th>
+      <th>updatedAt</th>
+      <th>isActive</th>
+      <th>Title</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let project of projects" (click)="setCurrentProject(project)" [class]="getProjectClass(project)">
+      <td>{{ project.id}}</td>
+      <td>{{ project.createdAt | date:'dd-MM-yyyy'}}</td>
+      <td>{{ project.updatedAt | date:'dd-MM-yyyy'}}</td>
+      <td>{{ project.isActive }}</td>
+      <td>{{ project.title }}</td>
+      <td>{{ project.description }}</td>
+      <td><button type="button" class="btn btn-outline-success btn-sm"
+          routerLink="/project/update/{{project.id}}">UPDATE</button></td>
+      <td><button type="button" class="btn btn-outline-danger btn-sm" (click)="deleteProject(project)">DELETE</button>
+      </td>
+    </tr>
+    <tr scope="col"><button type="button" class="btn btn-outline-warning m-2 " routerLink="/project/add">ADD
+        NEW</button></tr>
+  </tbody>
+</table>
 
 <!-- Blogs -->
-    <table *ngIf="blogs" class="table">
-      <thead>
-        <h4>Blogs</h4>
-        <tr>
-          <th>ID</th>
-          <th>createdAt</th>
-          <th>updatedAt</th>
-          <th>isDeleted</th>
-          <th>isActive</th>
-          <th>Title</th>
-          <th>Description</th>
-          <th>Content</th>
-          <th>publishedDate</th>
-        </tr>
-      </thead>
+<table class="table">
+  <thead>
+    <h4>Blogs</h4>
+    <tr>
+      <th>ID</th>
+      <th>createdAt</th>
+      <th>updatedAt</th>
+      <th>isActive</th>
+      <th>Title</th>
+      <th>Subject</th>
+      <th>Description</th>
+      <th>publishedDate</th>
+    </tr>
+  </thead>
 
-      <tbody>
-        <tr *ngFor="let blog of blogs" (click)="setCurrentBlog(blog)" 
-          [class]="getBlogClass(blog)">
-          <td>{{ blog.id}}</td>
-          <td>{{ blog.createdAt | date:'dd-MM-yyyy'}}</td>
-          <td>{{ blog.updatedAt | date:'dd-MM-yyyy'}}</td>
-          <td>{{ blog.isDeleted }}</td>
-          <td>{{ blog.isActive }}</td>
-          <td>{{ blog.title }}</td>
-          <td>{{ blog.description }}</td>
-          <td>{{ blog.content }}</td>
-          <td>{{ blog.publishedDate | date:'dd-MM-yyyy'}}</td>
-          <td><button type="button" class="btn btn-outline-success btn-sm" routerLink="/blog/update/{{blog.id}}">UPDATE</button></td>
-          <td><button type="button" class="btn btn-outline-info btn-sm"  routerLink="/blog/addImage/{{blog.id}}">ADD IMAGE/IMAGES</button></td>
-          <td><button type="button" class="btn btn-outline-danger btn-sm" (click)="deleteBlog(blog)">DELETE</button></td>
-        </tr>
-        <tr scope="col"><button type="button" routerLink="/blog/add" class="btn btn-outline-warning m-2">ADD NEW</button></tr>
-      </tbody>
-    </table>
+  <tbody>
+    <tr *ngFor="let blog of blogs" (click)="setCurrentBlog(blog)" [class]="getBlogClass(blog)">
+      <td>{{ blog.id}}</td>
+      <td>{{ blog.createdAt | date:'dd-MM-yyyy'}}</td>
+      <td>{{ blog.updatedAt | date:'dd-MM-yyyy'}}</td>
+      <td>{{ blog.isActive }}</td>
+      <td>{{ blog.title }}</td>
+      <td>{{ blog.subjectId }} </td>
+      <td>{{ blog.description }}</td>
+      <td>{{ blog.publishedDate | date:'dd-MM-yyyy'}}</td>
+      <td><button type="button" class="btn btn-outline-success btn-sm"
+          routerLink="/blog/update/{{blog.id}}">UPDATE</button></td>
+      <td><button type="button" class="btn btn-outline-info btn-sm" routerLink="/blog/addImage/{{blog.id}}">ADD
+          IMAGE/IMAGES</button></td>
+      <td><button type="button" class="btn btn-outline-danger btn-sm" (click)="deleteBlog(blog)">DELETE</button></td>
+    </tr>
+    <tr scope="col"><button type="button" routerLink="/blog/add" class="btn btn-outline-warning m-2">ADD NEW</button>
+    </tr>
+  </tbody>
+</table>
 
-  <!-- Certificates -->
-    <table *ngIf="certificates" class="table">
-      <thead>
-        <h4>Certificates</h4>
-        <tr>
-          <th >ID</th>
-          <th >createdAt</th>
-          <th>updatedAt</th>
-          <th >isDeleted</th>
-          <th >isActive</th>
-          <th >Title</th>
-          <th >Received Date</th>
-        </tr>
-      </thead>
+<!-- Certificates -->
+<table class="table">
+  <thead>
+    <h4>Certificates</h4>
+    <tr>
+      <th>ID</th>
+      <th>createdAt</th>
+      <th>updatedAt</th>
+      <th>isActive</th>
+      <th>Title</th>
+      <th>Received Date</th>
+    </tr>
+  </thead>
 
-      <tbody>
-        <tr *ngFor="let certificate of certificates" (click)="setCurrentCertificate(certificate)" 
-          [class]="getCertificateClass(certificate)">
-          <td>{{ certificate.id}}</td>
-          <td>{{ certificate.createdAt | date:'dd-MM-yyyy'}}</td>
-          <td>{{ certificate.updatedAt | date:'dd-MM-yyyy'}}</td>
-          <td>{{ certificate.isDeleted }}</td>
-          <td>{{ certificate.isActive }}</td>
-          <td>{{ certificate.title }}</td>
-          <td>{{ certificate.receivedDate | date:'dd-MM-yyyy'}}</td>
-          <td><button type="button" class="btn btn-outline-success btn-sm" routerLink="/certificate/update/{{certificate.id}}">UPDATE</button></td>
-          <td><button type="button" class="btn btn-outline-info btn-sm"  routerLink="/certificate/addImage/{{certificate.id}}">ADD IMAGE/IMAGES</button></td>
-          <td><button type="button" class="btn btn-outline-danger btn-sm" (click)="deleteCertificate(certificate)">DELETE</button></td>
-        </tr>
-        <tr scope="col"><button type="button" class="btn btn-outline-warning m-2" routerLink="/certificate/add">ADD NEW</button></tr>
-      </tbody>
-    </table>
+  <tbody>
+    <tr *ngFor="let certificate of certificates" (click)="setCurrentCertificate(certificate)"
+      [class]="getCertificateClass(certificate)">
+      <td>{{ certificate.id}}</td>
+      <td>{{ certificate.createdAt | date:'dd-MM-yyyy'}}</td>
+      <td>{{ certificate.updatedAt | date:'dd-MM-yyyy'}}</td>
+      <td>{{ certificate.isActive }}</td>
+      <td>{{ certificate.title }}</td>
+      <td>{{ certificate.receivedDate | date:'dd-MM-yyyy'}}</td>
+      <td><button type="button" class="btn btn-outline-success btn-sm"
+          routerLink="/certificate/update/{{certificate.id}}">UPDATE</button></td>
+      <td><button type="button" class="btn btn-outline-info btn-sm"
+          routerLink="/certificate/addImage/{{certificate.id}}">ADD IMAGE/IMAGES</button></td>
+      <td><button type="button" class="btn btn-outline-danger btn-sm"
+          (click)="deleteCertificate(certificate)">DELETE</button></td>
+    </tr>
+    <tr scope="col"><button type="button" class="btn btn-outline-warning m-2" routerLink="/certificate/add">ADD
+        NEW</button></tr>
+  </tbody>
+</table>
+
+<!-- Comments -->
+<table *ngIf="comments" class="table">
+  <thead>
+    <h4>Comments</h4>
+    <tr>
+      <th>ID</th>
+      <th>Content</th>
+      <th>blog</th>
+      <th>user</th>
+      <th>writtenDate</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let comment of comments" (click)="setCurrentComment(comment)"
+      [class]="getCommentClass(comment)">
+      <td>{{ comment.id}}</td>
+      <td>{{ comment.content}}</td>
+      <td>{{ comment.blog }}</td>
+      <td>{{ comment.user }}</td>
+      <td>{{ comment.writtenDate | date:'dd-MM-yyyy'}}</td>
+      <td><button type="button" class="btn btn-outline-danger btn-sm"
+          (click)="deleteComment(comment)">DELETE</button></td>
+    </tr>
+  </tbody>
+</table>

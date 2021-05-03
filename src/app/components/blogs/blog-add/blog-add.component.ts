@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Subject } from 'src/app/models/subject';
 import { BlogService } from 'src/app/services/blog.service';
+import { SubjectService } from 'src/app/services/subject.service';
 
 @Component({
   selector: 'app-blog-add',
@@ -12,22 +14,33 @@ import { BlogService } from 'src/app/services/blog.service';
 export class BlogAddComponent implements OnInit {
 
   blogAddForm: FormGroup;
+  subjects:Subject[];
+
   constructor(private formBuilder: FormBuilder,
     private blogService: BlogService,
     private toastrService: ToastrService,
-    private router: Router
+    private router: Router,
+    private subjectService:SubjectService
   ) { }
 
   ngOnInit(): void {
     this.createBlogAddForm();
+    this.getSubjects();
   }
 
+  getSubjects(){
+    this.subjectService.getSubjects().subscribe(response=>{
+      this.subjects=response.data;
+    })
+
+  }
 
   createBlogAddForm() {
     this.blogAddForm = this.formBuilder.group({
       title: ["", Validators.required],
       content: ["", Validators.required],
-      description: ["", Validators.required]
+      description: ["", Validators.required],
+      subjectId:["",Validators.required]
     })
   }
 

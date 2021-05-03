@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Claim } from 'src/app/models/claim';
 import { LoginModel } from 'src/app/models/loginModel';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
@@ -18,6 +19,7 @@ export class LoginComponent implements OnInit {
   
   loginForm:FormGroup;
   user:User;
+  claims:Claim[];
   imageURL=environment.baseURL;
   
   constructor(private formBuilder:FormBuilder,
@@ -63,9 +65,15 @@ export class LoginComponent implements OnInit {
       this.user = response.data;
       console.info(this.user)
       sessionStorage.setItem("fullName", this.user.firstName + " " + this.user.lastName);
+      sessionStorage.setItem("id",this.user.id.toString())
       sessionStorage.setItem("email",this.user.email)
+      this.userService.getClaim(this.user).subscribe((response=>{
+        this.claims=response.data;
+        sessionStorage.setItem("claim",this.claims[0].name)
+      }))
     });
 }
+
 
 
 }

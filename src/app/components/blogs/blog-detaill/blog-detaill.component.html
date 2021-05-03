@@ -28,9 +28,44 @@
             </blockquote>
             <p style="font-size: 18px;">{{blog.content}}</p>
             <hr>
-            <p class="blog-post-meta float-end">created at {{blog.publishedDate | date:'dd-MM-yyyy'}} by <a href="https://www.linkedin.com/in/ceren-susuz-2a70841b3/"><i class="fab fa-linkedin ps-2"></i>  Ceren Susuz</a></p>
-            
+            <p class="blog-post-meta float-end">published at {{blog.publishedDate | date:'dd-MM-yyyy'}} by <a
+                    href="https://www.linkedin.com/in/ceren-susuz-2a70841b3/"><i class="fab fa-linkedin ps-2"></i> Ceren
+                    Susuz</a></p>
+
         </article>
 
     </div>
+
+    <div *ngIf="comments" class="section-title mt-5 pt-5">
+        <p>Comments</p>
+        <hr>
+    </div>
+    <div *ngIf="comments">
+        <div *ngFor="let comment of comments" class="col-md-6">
+            <div class="post-info">
+                <p class="pt-4" style="font-style: italic;">{{comment.content}}</p>
+                <span class="float-end" style="color: darkblue;">written by {{comment.user}} at {{comment.writtenDate | date:'dd-MM-yyyy'}}</span>
+            </div>
+        </div>
+    </div>
+
+
+    <div class=" mt-2 pt-2">
+            <form [formGroup]="commentAddForm">
+
+                <div class="col-6">
+                    <label for="content">your comment:</label>
+                    <div class="form-group">
+                        <input type="text" id="content" class="form-control" formControlName="content" />
+                    </div>
+                </div>
+
+            </form>
+
+        <div class="card-footer">
+            <button class="btn btn-fill btn-success" (click)="add()">ADD</button>
+        </div>
+
+    </div>
+
 </div>

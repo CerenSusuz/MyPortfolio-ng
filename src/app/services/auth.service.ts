@@ -7,39 +7,47 @@ import { TokenModel } from '../models/tokenModel';
 import { LoginModel } from '../models/loginModel';
 import { RegisterModel } from '../models/registerModel';
 import { Router } from '@angular/router';
+import { ResponseModel } from '../models/responseModel';
+import { PasswordChange } from '../models/passwordChange';
+import { FuncsService } from './funcs.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  apiURL=environment.apiURL+'auth/';
+  apiURL = environment.apiURL + 'auth/';
 
-  constructor(private httpClient:HttpClient,
-    private router:Router) { }
+  constructor(private httpClient: HttpClient,
+    private router: Router,
+    private funcsService:FuncsService) {  }
 
-  login(user:LoginModel):Observable<ItemResponseModel<TokenModel>>{
-    let newPath=this.apiURL+'login';
-    return this.httpClient.post<ItemResponseModel<TokenModel>>(newPath,user);
+  login(user: LoginModel): Observable<ItemResponseModel<TokenModel>> {
+    let newPath = this.apiURL + 'login';
+    return this.httpClient.post<ItemResponseModel<TokenModel>>(newPath, user);
   }
 
-  isAuthenticated(){
-    return sessionStorage.getItem("token");
+  isAuthenticated() {
+    return this.funcsService.sessionStorageGetItem("token");
   }
 
   register(registerModel: RegisterModel): Observable<ItemResponseModel<TokenModel>> {
-    let newPath=this.apiURL+'register';
-    return this.httpClient.post<ItemResponseModel<TokenModel>>(newPath,registerModel);
+    let newPath = this.apiURL + 'register';
+    return this.httpClient.post<ItemResponseModel<TokenModel>>(newPath, registerModel);
   }
 
-  logOut(){
-    sessionStorage.removeItem("token");
-    sessionStorage.removeItem("fullName");
-    sessionStorage.removeItem("email");
-    sessionStorage.removeItem("id");
-    sessionStorage.removeItem("claim");
+  logOut() {
+    this.funcsService.sessionStorageRemoveItem("token");
+    this.funcsService.sessionStorageRemoveItem("fullName");
+    this.funcsService.sessionStorageRemoveItem("email");
+    this.funcsService.sessionStorageRemoveItem("id");
+    this.funcsService.sessionStorageRemoveItem("claim");
+  }
+
+  changePassword(passwordChangeModel:PasswordChange):Observable<ResponseModel>{
+    let newPath = this.apiURL + "changepassword";
+    return this.httpClient.post<ResponseModel>(newPath,passwordChangeModel);
   }
 
 
-  
 }

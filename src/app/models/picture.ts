@@ -1,9 +1,8 @@
-export interface BlogImage{
+export interface Picture{
     id:number;
     createdAt:Date;
     updatedAt?:Date;
     isActive:boolean;
 
-    blogId: number;
     imagePath: string;
 }

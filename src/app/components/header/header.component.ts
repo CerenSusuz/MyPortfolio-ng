@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
+import { FuncsService } from 'src/app/services/funcs.service';
 
 @Component({
   selector: 'app-header',
@@ -12,14 +13,15 @@ export class HeaderComponent implements OnInit {
 
   constructor(private authService:AuthService,
     private toastr:ToastrService,
-    private router:Router) { }
+    private router:Router,
+    private funcsService:FuncsService) { }
 
   ngOnInit(): void {
     
   }
 
   isLogOK(){
-    if(sessionStorage.getItem("token")){
+    if(this.funcsService.sessionStorageGetItem("token")){
       return true;
     } else {
       return false;
@@ -27,7 +29,7 @@ export class HeaderComponent implements OnInit {
   }
 
   getUser(){
-    return sessionStorage.getItem('fullName');
+    return this.funcsService.sessionStorageGetItem('fullName');
     }
 
   logout(){
@@ -37,7 +39,7 @@ export class HeaderComponent implements OnInit {
   }
 
   isAdmin(){
-    if(sessionStorage.getItem("claim")==="admin"){
+    if(this.funcsService.sessionStorageGetItem("claim")==="admin"){
       return true;
     }else{
       return false;

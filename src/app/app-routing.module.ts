@@ -11,10 +11,12 @@ import { CertificateAddComponent } from './components/certificate/certificate-ad
 import { CertificateDetailComponent } from './components/certificate/certificate-detail/certificate-detail.component';
 import { CertificateImageAddComponent } from './components/certificate/certificate-image-add/certificate-image-add.component';
 import { CertificateUpdateComponent } from './components/certificate/certificate-update/certificate-update.component';
+import { CommentUpdateComponent } from './components/comment-update/comment-update.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { EditInfoComponent } from './components/edit-info/edit-info.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { LoginComponent } from './components/login/login.component';
+import { PictureAddComponent } from './components/picture/picture-add/picture-add.component';
 import { ProjectAddComponent } from './components/projects/project-add/project-add.component';
 import { ProjectUpdateComponent } from './components/projects/project-update/project-update.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
@@ -47,6 +49,10 @@ const routes: Routes = [
 
   {path:"project/add",component:ProjectAddComponent, canActivate:[LoginGuard]},
   {path:"project/update/:id",component:ProjectUpdateComponent, canActivate:[LoginGuard]},
+
+  {path:"picture/add",component:PictureAddComponent, canActivate:[LoginGuard]},
+
+  {path:"comment/update/:id",component:CommentUpdateComponent, canActivate:[LoginGuard]},
 ];
 
 @NgModule({

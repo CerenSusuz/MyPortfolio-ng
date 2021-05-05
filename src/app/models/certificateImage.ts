@@ -6,5 +6,4 @@ export interface CertificateImage{
 
     certificateId: number;
     imagePath: string;
-    date: Date;
 }

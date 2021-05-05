@@ -9,6 +9,7 @@ import { environment } from 'src/environments/environment';
 import { ToastrService } from 'ngx-toastr';
 import { CommentService } from 'src/app/services/comment.service';
 import { Comment } from 'src/app/models/comment';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-blog-detaill',
@@ -17,23 +18,25 @@ import { Comment } from 'src/app/models/comment';
 })
 export class BlogDetaillComponent implements OnInit {
 
-  blog:Blog;
-  images:BlogImage[];
-  imageUrl=environment.baseURL;
+  blog: Blog;
+  images: BlogImage[];
+  imageUrl = environment.baseURL;
+  user: User;
 
-  commentAddForm : FormGroup;
-  comments:Comment[];
+  commentAddForm: FormGroup;
+  comments: Comment[];
+  currentComment: Comment;
 
-  constructor(private blogImageService:BlogImageService,
-    private blogService:BlogService,
-    private activatedRoute:ActivatedRoute,
+  constructor(private blogImageService: BlogImageService,
+    private blogService: BlogService,
+    private activatedRoute: ActivatedRoute,
     private toastrService: ToastrService,
     private formBuilder: FormBuilder,
-    private commentService:CommentService) { }
+    private commentService: CommentService) { }
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe(params=>{
-      if(params["blogId"]){
+    this.activatedRoute.params.subscribe(params => {
+      if (params["blogId"]) {
         this.getBlogDetail(params["blogId"]);
         this.getImages(params["blogId"]);
         this.createCommentAddForm();
@@ -42,20 +45,20 @@ export class BlogDetaillComponent implements OnInit {
     })
   }
 
-  getBlogDetail(blogId:number){
-    this.blogService.getById(blogId).subscribe(response=>{
-      this.blog=response.data;
+  getBlogDetail(blogId: number) {
+    this.blogService.getById(blogId).subscribe(response => {
+      this.blog = response.data;
     })
   }
 
-  getImages(blogId:number){
-  this.blogImageService.getImagesByBlogId(blogId).subscribe(response=>{
-    this.images=response.data;
+  getImages(blogId: number) {
+    this.blogImageService.getImagesByBlogId(blogId).subscribe(response => {
+      this.images = response.data;
     })
   }
 
-  getSliderClassName(index:Number){
-    if(index == 0){
+  getSliderClassName(index: Number) {
+    if (index == 0) {
       return "carousel-item active";
     } else {
       return "carousel-item";
@@ -64,9 +67,9 @@ export class BlogDetaillComponent implements OnInit {
 
   // comment
 
-  getCommentsByBlogId(blogId:number){
-    this.commentService.getByBlogId(blogId).subscribe(response=>{
-      this.comments=response.data;
+  getCommentsByBlogId(blogId: number) {
+    this.commentService.getByBlogId(blogId).subscribe(response => {
+      this.comments = response.data;
       console.log(this.comments)
     })
 
@@ -80,29 +83,37 @@ export class BlogDetaillComponent implements OnInit {
 
   add() {
     if (this.commentAddForm.valid) {
-      let commentModel:Comment = Object.assign({}, this.commentAddForm.value)
+      let commentModel: Comment = Object.assign({}, this.commentAddForm.value)
       commentModel.userId = Number(sessionStorage.getItem("id"));
       commentModel.blogId = this.blog.id;
       this.commentService.add(commentModel).subscribe(response => {
         this.toastrService.success("Comment added.")
         window.location.reload();
-      },responseError=>{
-        if(responseError.error.Errors.length>0){
-          for (let i = 0; i <responseError.error.Errors.length; i++) {
+      }, responseError => {
+        if (responseError.error.Errors.length > 0) {
+          for (let i = 0; i < responseError.error.Errors.length; i++) {
             this.toastrService.error(responseError.error.Errors[i].ErrorMessage
-              ,"Validators Error")
-          }       
-        } 
+              , "Validators Error")
+          }
+        }
       })
-      
-    }else{
+
+    } else {
       this.toastrService.error("Form Error")
     }
-    }
-
-
-
-
   }
+
+  delete(comment: Comment) {
+    if(comment.userId == Number(sessionStorage.getItem("id"))){
+      this.commentService.delete(comment).subscribe(response => {
+        this.toastrService.success("Delete OK")
+        window.location.reload()
+      }, response => {
+        this.toastrService.error("Error")
+      })
+    }  
+  }
+
+}
 
 

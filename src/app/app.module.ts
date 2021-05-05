@@ -34,6 +34,10 @@ import { ProjectUpdateComponent } from './components/projects/project-update/pro
 import { CertificateImageAddComponent } from './components/certificate/certificate-image-add/certificate-image-add.component';
 import { SubjectComponent } from './components/subject/subject.component';
 import { SubjectviablogComponent } from './components/subject/subjectviablog/subjectviablog.component';
+import { PictureComponent } from './components/picture/picture.component';
+import { PictureAddComponent } from './components/picture/picture-add/picture-add.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { CommentUpdateComponent } from './components/comment-update/comment-update.component';
 
 
 
@@ -63,7 +67,11 @@ import { SubjectviablogComponent } from './components/subject/subjectviablog/sub
     ProjectUpdateComponent,
     CertificateImageAddComponent,
     SubjectComponent,
-    SubjectviablogComponent
+    SubjectviablogComponent,
+    PictureComponent,
+    PictureAddComponent,
+    ChangePasswordComponent,
+    CommentUpdateComponent
   ],
   imports: [
     BrowserModule,

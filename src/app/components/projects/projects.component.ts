@@ -18,7 +18,6 @@ export class ProjectsComponent implements OnInit {
   getProjects(){
     this.projectService.getProjects().subscribe(response=>{
      this.projects=response.data;
-     console.log(this.projects)
     })
   }
 }

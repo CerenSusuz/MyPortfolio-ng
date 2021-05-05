@@ -33,7 +33,7 @@ export class UserService {
   }
 
   update(user:User):Observable<ResponseModel>{
-    let newUrl= this.apiURL+"user/edit";
+    let newUrl= this.apiURL+"update";
     return this.httpClient.post<ResponseModel>(newUrl,user);
   }
 

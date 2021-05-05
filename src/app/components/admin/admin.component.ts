@@ -1,4 +1,3 @@
-import { CoreEnvironment } from '@angular/compiler/src/compiler_facade_interface';
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Blog } from 'src/app/models/blog';
@@ -6,12 +5,14 @@ import { BlogImage } from 'src/app/models/blogImage';
 import { Certificate } from 'src/app/models/certificate';
 import { CertificateImage } from 'src/app/models/certificateImage';
 import { Comment } from 'src/app/models/comment';
+import { Picture } from 'src/app/models/picture';
 import { Project } from 'src/app/models/project';
 import { BlogImageService } from 'src/app/services/blog-images.service';
 import { BlogService } from 'src/app/services/blog.service';
 import { CertificateImageService } from 'src/app/services/certificate-images.service';
 import { CertificateService } from 'src/app/services/certificate.service';
 import { CommentService } from 'src/app/services/comment.service';
+import { PictureService } from 'src/app/services/picture.service';
 import { ProjectService } from 'src/app/services/project.service';
 import { environment } from 'src/environments/environment';
 
@@ -35,11 +36,13 @@ export class AdminComponent implements OnInit {
   certificateImages:CertificateImage[];
   currentCertificateImage:CertificateImage;
 
+  pictures:Picture[];
+  currentPicture:Picture;
+
   comments:Comment[];
   currentComment:Comment;
 
   imageUrl=environment.baseURL;
-
 
   constructor(private projectService:ProjectService,
     private blogService:BlogService,
@@ -47,7 +50,8 @@ export class AdminComponent implements OnInit {
     private toastrService:ToastrService,
     private blogImagesService:BlogImageService,
     private certificateImageService:CertificateImageService,
-    private commentService:CommentService
+    private commentService:CommentService,
+    private pictureService:PictureService
 
     
     ) { }
@@ -59,6 +63,7 @@ export class AdminComponent implements OnInit {
     this.getBlogImages();
     this.getCertificateImages();
     this.getComments();
+    this.getPictures();
   }
 
   //Blog Images
@@ -88,10 +93,44 @@ export class AdminComponent implements OnInit {
       isActive:blogImage.isActive,
       createdAt:blogImage.createdAt,
       blogId:blogImage.blogId,
-      date:blogImage.date,
       imagePath:blogImage.imagePath,
     }
     this.blogImagesService.delete(blogImageModel).subscribe(response=>{
+      this.toastrService.success("DELETE OK")
+      window.location.reload()
+    },responseError=>{
+      this.toastrService.error("ERRROR")
+    })
+  }
+
+  // Pictures
+
+  getPictures(){
+    this.pictureService.getAll().subscribe(response=>{
+      this.pictures=response.data;
+    })
+  }
+
+  setCurrentPicture(picture:Picture){
+    this.currentPicture=picture;
+  }
+
+  getPictureClass(picture:Picture){
+    if(picture==this.currentPicture){
+      return "table-info cursorPointer"
+    }else{
+      return "cursorPointer"
+    }
+  }
+
+  deletePicture(picture:Picture){
+    let pictureModel:Picture={
+      id:picture.id,
+      isActive:picture.isActive,
+      createdAt:picture.createdAt,
+      imagePath:picture.imagePath,
+    }
+    this.pictureService.delete(pictureModel).subscribe(response=>{
       this.toastrService.success("DELETE OK")
       window.location.reload()
     },responseError=>{
@@ -125,7 +164,6 @@ export class AdminComponent implements OnInit {
         isActive:certificateImage.isActive,
         createdAt:certificateImage.createdAt,
         certificateId:certificateImage.certificateId,
-        date:certificateImage.date,
         imagePath:certificateImage.imagePath
       }
       this.certificateImageService.delete(certificateImageModel).subscribe(response=>{

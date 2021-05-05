@@ -20,7 +20,6 @@ export class CertificateComponent implements OnInit {
   getCertificates(){
     this.certificateService.getCertificates().subscribe(response=>{
       this.certificates=response.data;
-      console.log(this.certificates)
     })
   }
 

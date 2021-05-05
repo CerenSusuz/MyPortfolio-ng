@@ -41,14 +41,19 @@
         <hr>
     </div>
     <div *ngIf="comments">
-        <div *ngFor="let comment of comments" class="col-md-6">
+        <div *ngFor="let comment of comments" class="col-6">
             <div class="post-info">
                 <p class="pt-4" style="font-style: italic;">{{comment.content}}</p>
                 <span class="float-end" style="color: darkblue;">written by {{comment.user}} at {{comment.writtenDate | date:'dd-MM-yyyy'}}</span>
+            
             </div>
+            <button (click)="delete(comment)" class="btn btn-danger float-end"><i class="fas fa-trash-alt"></i></button>
+            <button routerLink="/comment/update/{{comment.id}}" class="btn btn-warning float-end" data-bs-toggle="modal" data-bs-target="#exampleUpdateModal"><i class="fas fa-trash-alt"></i></button>
+
         </div>
     </div>
 
+  <app-comment-update></app-comment-update>
 
     <div class=" mt-2 pt-2">
             <form [formGroup]="commentAddForm">

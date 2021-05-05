@@ -1,0 +1,17 @@
+  <div class="modal fade" id="exampleUpdateModal" tabindex="-1" aria-labelledby="exampleUpdateModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+            <form [formGroup]="commentUpdateForm">
+                <div class="mb-3">
+                    <label for="content" class="form-label">Edit your comment</label>
+                    <input formControlName="content" type="text" class="form-control" id="content" placeholder="">
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary mybtn" data-bs-dismiss="modal">Change</button>
+        </div>
+      </div>
+    </div>
+  </div>

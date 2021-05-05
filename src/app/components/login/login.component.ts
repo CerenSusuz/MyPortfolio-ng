@@ -6,6 +6,7 @@ import { Claim } from 'src/app/models/claim';
 import { LoginModel } from 'src/app/models/loginModel';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
+import { FuncsService } from 'src/app/services/funcs.service';
 import { UserService } from 'src/app/services/user.service';
 import { environment } from 'src/environments/environment';
 
@@ -26,7 +27,8 @@ export class LoginComponent implements OnInit {
     private authService:AuthService,
     private toastr:ToastrService,
     private router:Router,
-    private userService:UserService) { }
+    private userService:UserService,
+    private funcsService:FuncsService) { }
 
   ngOnInit(): void {
     this.createLoginForm();
@@ -45,14 +47,12 @@ export class LoginComponent implements OnInit {
       let loginModel:LoginModel = Object.assign({},this.loginForm.value)
 
       this.authService.login(loginModel).subscribe(response=>{
-        console.log(response);
-        sessionStorage.setItem("token",response.data.token);
+        this.funcsService.sessionStorageSetItem("token",response.data.token);
         console.info(response.data.claims)
         this.toastr.info(response.message)
         this.router.navigate(['/homepage'])
         this.getUser(loginModel.email);
       },responseError=>{
-        console.log(responseError)
         this.toastr.error(responseError.error)
       })
     }else{
@@ -63,13 +63,12 @@ export class LoginComponent implements OnInit {
   getUser(email:string){
     this.userService.getByEmail(email).subscribe((response) => {
       this.user = response.data;
-      console.info(this.user)
-      sessionStorage.setItem("fullName", this.user.firstName + " " + this.user.lastName);
-      sessionStorage.setItem("id",this.user.id.toString())
-      sessionStorage.setItem("email",this.user.email)
+      this.funcsService.sessionStorageSetItem("fullName", this.user.firstName + " " + this.user.lastName);
+      this.funcsService.sessionStorageSetItem("id",this.user.id.toString())
+      this.funcsService.sessionStorageSetItem("email",this.user.email)
       this.userService.getClaim(this.user).subscribe((response=>{
         this.claims=response.data;
-        sessionStorage.setItem("claim",this.claims[0].name)
+        this.funcsService.sessionStorageSetItem("claim",this.claims[0].name)
       }))
     });
 }

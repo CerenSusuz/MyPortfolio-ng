@@ -14,7 +14,7 @@
  
  <div class="col-md-8 mt-5">
       <div class="card">
-        <div class="card-header"><h5 class="card-title" style="color: darkblue; font-size: 24px;">Hello, {{getName()}}</h5></div>
+        <div class="card-header"><h5 class="card-title mt-2" style="color: darkblue; font-size: 24px;">Let's change your info,</h5></div>
         <div class="card-body">
   
           <form [formGroup]="editProfileForm" >
@@ -23,7 +23,7 @@
               <label for="firstName" class="col-sm-2 col-form-label">First Name</label>
               <div class="col-sm-8">
                 <input type="text " id="firstName" formControlName="firstName" class="form-control"
-                       placeholder="Adınız"/>
+                       placeholder="FirstName"/>
               </div>
             </div>
   
@@ -31,7 +31,7 @@
               <label for="lastName" class="col-sm-2 col-form-label">Last Name</label>
               <div class="col-sm-8">
                 <input type="text" id="lastName" formControlName="lastName"   class="form-control"
-                       placeholder="Soyadınız"/>
+                       placeholder="LastName"/>
               </div>
             </div>
   
@@ -39,7 +39,7 @@
               <label for="email" class="col-sm-2 col-form-label">E-Mail</label>
               <div class="col-sm-8">
                 <input type="text" id="email" formControlName="email" class="form-control"
-                       placeholder="E-Posta Adresiniz"/>
+                       placeholder="E-mail"/>
               </div>
             </div>
   
@@ -50,6 +50,8 @@
           <button (click)="checkForm()" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">DELETE ACCOUNT</button>
           <button class="btn btn-lg btn-outline-success float-end" (click)="editProfile()" >EDIT INFO</button>
         </div>
+
+        <app-change-password></app-change-password>
   
       </div>
     </div>

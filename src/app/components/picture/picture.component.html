@@ -1,0 +1,17 @@
+<div class="section-title text-center">
+    <h3>Photographs</h3>
+    <hr>
+</div>
+
+<div *ngIf="pictures" class="row">
+    <div *ngFor="let picture of pictures" class="col-md-3 col-sm-6 col-lg-4">
+        <div class="gallery-list row">
+            <div class="gallery-grid gal_a gal_b">
+                <div class="gallery-single fix">
+                    <img src="{{ imageUrl }}/{{ picture.imagePath }}" class="d-block w-100" alt="Image" width="200px" height="200px">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

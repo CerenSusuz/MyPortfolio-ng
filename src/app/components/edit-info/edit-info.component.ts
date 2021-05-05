@@ -1,3 +1,4 @@
+import { Byte } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -15,8 +16,15 @@ export class EditInfoComponent implements OnInit {
 
   editProfileForm:FormGroup
   password:FormControl
-  email:string;
   user:User;
+
+  id: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  passwordHash: Byte[];
+  passwordSalt: Byte[];
+  status: boolean;
 
   constructor(private userService:UserService,
     private formBuilder:FormBuilder,
@@ -31,39 +39,40 @@ export class EditInfoComponent implements OnInit {
 
   createProfileAddForm(){
     this.editProfileForm=this.formBuilder.group({
-      firstName:["",Validators.required],
-      lastName:["",Validators.required],
-      email:["",Validators.required]
+      id: [this.id, Validators.required],
+      firstName: [this.firstName, Validators.required],
+      lastName: [this.lastName, Validators.required],
+      email: [this.email, Validators.required],
+      passwordHash: [this.passwordHash, Validators.required],
+      passwordSalt: [this.passwordSalt, Validators.required],
+      status: [this.status, Validators.required],
     })
   }
 
   getUser(){
         this.userService.getByEmail(sessionStorage.getItem('email')!).subscribe(response=>{
             this.user = response.data;
-             this.editProfileForm.setValue({
-              firstName:this.user.firstName,
-              lastName:this.user.lastName,
-              email:this.user.email
-            })
+            this.id = this.user.id;
+            this.firstName = this.user.firstName;
+            this.lastName = this.user.lastName;
+            this.email = this.user.email;
+            this.passwordHash = this.user.passwordHash;
+            this.passwordSalt = this.user.passwordSalt;
+            this.status = this.user.status;
+            this.createProfileAddForm()
         },responseError=>{
           this.toastrService.error(responseError.error);
         })
       
   }
 
-  getName(){
-    return sessionStorage.getItem('fullName');
-  }
-
   editProfile(){
     if(this.editProfileForm.valid){
       let profileModel = Object.assign({},this.editProfileForm.value)
-      profileModel.id=this.user.id;
-      profileModel.firstName=this.user.firstName;
-      profileModel.lastName=this.user.lastName;
       this.userService.update(profileModel).subscribe(response=>{
+       console.groupCollapsed(profileModel)
         this.toastrService.success("Login AGAIN please");
-        this.router.navigate(["/homepage"]);
+        this.router.navigate(["/login"]);
         this.authService.logOut();
       },responseError=>{
        this.toastrService.error(responseError.error);
@@ -81,7 +90,7 @@ export class EditInfoComponent implements OnInit {
       profileModel.lastName=this.user.lastName;
       this.userService.delete(profileModel).subscribe(response=>{
         this.authService.logOut();
-        this.router.navigate(["/homepage"]);
+        this.router.navigate(["/register"]);
       },responseError=>{
         this.toastrService.error(responseError.error);
        });
@@ -97,7 +106,6 @@ export class EditInfoComponent implements OnInit {
       profileModel.id=this.user.id;
       profileModel.firstName=this.user.firstName;
       profileModel.lastName=this.user.lastName;
-      profileModel.password=this.user.password;
       console.log(profileModel)
     }else{
       this.toastrService.error("Complete the form.","ERROR")

@@ -51,7 +51,6 @@ export class CertificateUpdateComponent implements OnInit {
   update(){
     if(this.certificateUpdateForm.valid){      
       let certificateModel = Object.assign({},this.certificateUpdateForm.value)
-      console.log(this.certificate)
       certificateModel.id = this.certificate.id;
       this.certificateService.update(certificateModel).subscribe(response=>{
         this.toastr.success("UPDATE OK")

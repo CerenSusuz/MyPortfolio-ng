@@ -11,9 +11,9 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 
 import { ToastrModule } from 'ngx-toastr';
+
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { AboutMeComponent } from './components/about-me/about-me.component';
-import { ContactComponent } from './components/contact/contact.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { BlogsComponent } from './components/blogs/blog-list/blogs.component';
@@ -37,7 +37,7 @@ import { SubjectviablogComponent } from './components/subject/subjectviablog/sub
 import { PictureComponent } from './components/picture/picture.component';
 import { PictureAddComponent } from './components/picture/picture-add/picture-add.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
-import { CommentUpdateComponent } from './components/comment-update/comment-update.component';
+import { CommentEditComponent } from './components/comment-edit/comment-edit.component';
 
 
 
@@ -48,7 +48,6 @@ import { CommentUpdateComponent } from './components/comment-update/comment-upda
     HeaderComponent,
     HomepageComponent,
     AboutMeComponent,
-    ContactComponent,
     LoginComponent,
     SignUpComponent,
     BlogsComponent,
@@ -71,7 +70,7 @@ import { CommentUpdateComponent } from './components/comment-update/comment-upda
     PictureComponent,
     PictureAddComponent,
     ChangePasswordComponent,
-    CommentUpdateComponent
+    CommentEditComponent,
   ],
   imports: [
     BrowserModule,

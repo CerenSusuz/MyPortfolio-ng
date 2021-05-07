@@ -77,7 +77,6 @@ export class BlogImageAddComponent implements OnInit {
   processFile(imageInput: any) {
       const file: File = imageInput.files[0];
       const reader = new FileReader();
-      console.log(this.blog.id)
   
       reader.addEventListener('load', (event: any) => {
   

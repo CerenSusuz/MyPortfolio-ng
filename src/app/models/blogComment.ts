@@ -1,4 +1,4 @@
-export interface Comment{
+export interface BlogComment{
     id:number;
     content:string;
     blogId:number;

@@ -48,8 +48,7 @@ export class LoginComponent implements OnInit {
 
       this.authService.login(loginModel).subscribe(response=>{
         this.funcsService.sessionStorageSetItem("token",response.data.token);
-        console.info(response.data.claims)
-        this.toastr.info(response.message)
+        this.toastr.success(response.message)
         this.router.navigate(['/homepage'])
         this.getUser(loginModel.email);
       },responseError=>{
@@ -66,6 +65,7 @@ export class LoginComponent implements OnInit {
       this.funcsService.sessionStorageSetItem("fullName", this.user.firstName + " " + this.user.lastName);
       this.funcsService.sessionStorageSetItem("id",this.user.id.toString())
       this.funcsService.sessionStorageSetItem("email",this.user.email)
+      this.toastr.info("Welcome," + this.funcsService.sessionStorageGetItem("fullName"))
       this.userService.getClaim(this.user).subscribe((response=>{
         this.claims=response.data;
         this.funcsService.sessionStorageSetItem("claim",this.claims[0].name)

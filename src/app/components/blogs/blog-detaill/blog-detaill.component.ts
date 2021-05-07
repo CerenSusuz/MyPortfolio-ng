@@ -8,8 +8,9 @@ import { BlogService } from 'src/app/services/blog.service';
 import { environment } from 'src/environments/environment';
 import { ToastrService } from 'ngx-toastr';
 import { CommentService } from 'src/app/services/comment.service';
-import { Comment } from 'src/app/models/comment';
 import { User } from 'src/app/models/user';
+import { FuncsService } from 'src/app/services/funcs.service';
+import { BlogComment } from 'src/app/models/blogComment';
 
 @Component({
   selector: 'app-blog-detaill',
@@ -24,15 +25,18 @@ export class BlogDetaillComponent implements OnInit {
   user: User;
 
   commentAddForm: FormGroup;
-  comments: Comment[];
-  currentComment: Comment;
+  comments: BlogComment [];
+  currentComment:BlogComment;
+
+  commentUpdateForm:FormGroup;
 
   constructor(private blogImageService: BlogImageService,
     private blogService: BlogService,
     private activatedRoute: ActivatedRoute,
     private toastrService: ToastrService,
     private formBuilder: FormBuilder,
-    private commentService: CommentService) { }
+    private commentService: CommentService,
+    private funcsService:FuncsService) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
@@ -70,7 +74,6 @@ export class BlogDetaillComponent implements OnInit {
   getCommentsByBlogId(blogId: number) {
     this.commentService.getByBlogId(blogId).subscribe(response => {
       this.comments = response.data;
-      console.log(this.comments)
     })
 
   }
@@ -81,10 +84,11 @@ export class BlogDetaillComponent implements OnInit {
     })
   }
 
+
   add() {
     if (this.commentAddForm.valid) {
-      let commentModel: Comment = Object.assign({}, this.commentAddForm.value)
-      commentModel.userId = Number(sessionStorage.getItem("id"));
+      let commentModel: BlogComment = Object.assign({}, this.commentAddForm.value)
+      commentModel.userId = Number(this.funcsService.sessionStorageGetItem("id"));
       commentModel.blogId = this.blog.id;
       this.commentService.add(commentModel).subscribe(response => {
         this.toastrService.success("Comment added.")
@@ -103,15 +107,24 @@ export class BlogDetaillComponent implements OnInit {
     }
   }
 
-  delete(comment: Comment) {
-    if(comment.userId == Number(sessionStorage.getItem("id"))){
+  delete(comment:BlogComment ) {
+    if(comment.userId == Number(this.funcsService.sessionStorageGetItem("id"))){
       this.commentService.delete(comment).subscribe(response => {
-        this.toastrService.success("Delete OK")
+        this.toastrService.success("Your comment deleted")
         window.location.reload()
       }, response => {
         this.toastrService.error("Error")
       })
-    }  
+    }  else{
+      this.toastrService.error("It's not your comment, sorry...")
+    }
+  }
+
+  isUser(comment:BlogComment){
+    if(comment.userId == Number(this.funcsService.sessionStorageGetItem("id"))){
+      return true;
+    }
+    return false;
   }
 
 }

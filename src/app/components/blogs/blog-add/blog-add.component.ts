@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Subject } from 'src/app/models/subject';
 import { BlogService } from 'src/app/services/blog.service';
@@ -14,13 +14,13 @@ import { SubjectService } from 'src/app/services/subject.service';
 export class BlogAddComponent implements OnInit {
 
   blogAddForm: FormGroup;
-  subjects:Subject[];
+  subjects: Subject[];
 
   constructor(private formBuilder: FormBuilder,
     private blogService: BlogService,
     private toastrService: ToastrService,
     private router: Router,
-    private subjectService:SubjectService
+    private subjectService: SubjectService
   ) { }
 
   ngOnInit(): void {
@@ -28,9 +28,9 @@ export class BlogAddComponent implements OnInit {
     this.getSubjects();
   }
 
-  getSubjects(){
-    this.subjectService.getSubjects().subscribe(response=>{
-      this.subjects=response.data;
+  getSubjects() {
+    this.subjectService.getSubjects().subscribe(response => {
+      this.subjects = response.data;
     })
 
   }
@@ -40,7 +40,7 @@ export class BlogAddComponent implements OnInit {
       title: ["", Validators.required],
       content: ["", Validators.required],
       description: ["", Validators.required],
-      subjectId:["",Validators.required]
+      subjectId: ["", Validators.required]
     })
   }
 
@@ -48,7 +48,6 @@ export class BlogAddComponent implements OnInit {
   add() {
     if (this.blogAddForm.valid) {
       let blogModel = Object.assign({}, this.blogAddForm.value)
-      console.log(blogModel)
       this.blogService.add(blogModel).subscribe(response => {
         this.toastrService.success("OK admin")
         this.router.navigate(['/admin']);

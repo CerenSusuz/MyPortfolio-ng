@@ -67,7 +67,6 @@ export class BlogUpdateComponent implements OnInit {
   update(){
     if(this.blogUpdateForm.valid){      
       let blogModel = Object.assign({},this.blogUpdateForm.value)
-      console.log(this.blog)
       blogModel.id = this.blog.id;
       this.blogService.update(blogModel).subscribe(response=>{
         this.toastr.success("UPDATE OK")

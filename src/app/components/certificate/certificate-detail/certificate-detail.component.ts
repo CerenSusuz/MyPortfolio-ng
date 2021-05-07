@@ -29,17 +29,16 @@ export class CertificateDetailComponent implements OnInit {
       }
     })
   }
+  
   getCertificateDetail(certificateId:number){
     this.certificateService.getCertificate(certificateId).subscribe(response=>{
       this.certificate=response.data;
-      console.log(this.certificate);
     })
   }
 
   getImages(certificateId:number){
     this.certificateImageService.getImagesByCertificateId(certificateId).subscribe(response=>{
       this.images=response.data;
-      console.log(response);
     })
   }
 

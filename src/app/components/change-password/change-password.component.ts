@@ -44,7 +44,6 @@ export class ChangePasswordComponent implements OnInit {
         this.authService.logOut();
         this.router.navigate(["/homepage"]);
       },responseError => {
-        console.log(responseError)
         this.toastrService.error(responseError.error.message,"Error");
       })
     }else{

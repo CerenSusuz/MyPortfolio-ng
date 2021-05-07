@@ -22,10 +22,12 @@ export class LoginGuard implements CanActivate {
       if(this.authService.isAuthenticated()){
         return true;
       }else{
+        this.toastr.info("to visit the page","LOGIN/REGISTER");
         this.router.navigate(["login"]);
-        this.toastr.info("Must be LOGIN");
+      
         return false;
       }
+      
   }
   
 }

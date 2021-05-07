@@ -117,9 +117,79 @@ nav{
 	letter-spacing: 1px;
 }
 
+
+
 /*------------------------------------------------------------------
     SECTIONS
 -------------------------------------------------------------------*/
+.main-heading
+{
+	background-size:cover;
+	background-attachment: fixed;
+	color: #cfcfcf;
+        margin-top:80px;
+}
+
+
+
+.overlay > .container
+{
+    padding:170px 0px;    
+}
+
+.main-heading >.overlay
+{
+    height: 750px;
+}
+p.lead
+{
+   position:relative;
+   top:5px;
+   color:#e3e3e3;
+   font-size:0.93em;
+   
+}
+
+.main-heading-content {
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+	position: absolute;
+	top: 30%;
+	left: 0;
+	right: 0;
+}
+
+.main-heading-title {
+	font-weight: 900;
+	color: #ffffff;
+	text-transform: uppercase;
+	font-size:3.5em;
+	text-shadow: rgba(0,0,0,0.498039) 2px 2px 2px;
+	letter-spacing: 0.02em;
+	
+}
+.main-heading-title span {
+	margin-left: 6px;
+}
+.main-heading-text {
+	font-size: 16px;
+	color: #ffffff;
+	margin-bottom: 20px;
+}
+.main-cursor {
+	opacity: 1;
+	-webkit-animation: blink .6s infinite;
+	-moz-animation: blink .6s infinite;
+	-ms-animation: blink .6s infinite;
+	-o-animation: blink .6s infinite;
+	animation: blink .6s infinite;
+}
+
+.themecolor
+{
+    color:#117d8b;/*Defines the theme color*/
+}
 
 .main-banner{
 	position: relative;

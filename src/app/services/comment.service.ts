@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Comment } from '../models/comment';
+import { BlogComment } from '../models/blogComment';
 import { ItemResponseModel } from '../models/itemResponseModel';
 import { ListResponseModel } from '../models/listResponseModel';
 import { ResponseModel } from '../models/responseModel';
@@ -16,40 +16,45 @@ export class CommentService {
 
   constructor(private httpClient:HttpClient) { }
 
-  add(comment:Comment):Observable<ResponseModel>{
+  add(comment:BlogComment):Observable<ResponseModel>{
     return this.httpClient.post<ResponseModel>(this.apiURL+"comments/add",comment);
   }
 
-  update(comment:Comment):Observable<ResponseModel>{
+  update(comment:BlogComment):Observable<ResponseModel>{
     return this.httpClient.post<ResponseModel>(this.apiURL+"comments/update",comment);
   }
 
-  delete(comment:Comment):Observable<ResponseModel>{
+  delete(comment:BlogComment):Observable<ResponseModel>{
     return this.httpClient.post<ResponseModel>(this.apiURL+"comments/delete",comment);
   }
   
-  getComments():Observable<ListResponseModel<Comment>>{
+  getComments():Observable<ListResponseModel<BlogComment>>{
     let newPath=this.apiURL+"comments/getcommentdetails";
-    return this.httpClient.get<ListResponseModel<Comment>>(newPath);
+    return this.httpClient.get<ListResponseModel<BlogComment>>(newPath);
   }
 
-  getCommentDetails(commentId:number):Observable<ListResponseModel<Comment>>{
+  getAll():Observable<ListResponseModel<BlogComment>>{
+    let newPath=this.apiURL+"comments/getall";
+    return this.httpClient.get<ListResponseModel<BlogComment>>(newPath);
+  }
+
+  getCommentDetails(commentId:number):Observable<ListResponseModel<BlogComment>>{
     let newPath=this.apiURL+"comments/getcommentdetailbyid?id="+commentId;
-    return this.httpClient.get<ListResponseModel<Comment>>(newPath);
+    return this.httpClient.get<ListResponseModel<BlogComment>>(newPath);
   }
 
-  getById(commentId:number):Observable<ItemResponseModel<Comment>>{
+  getById(commentId:number):Observable<ItemResponseModel<BlogComment>>{
     let newPath = this.apiURL + 'comments/getbyid?id='+commentId;
-    return this.httpClient.get<ItemResponseModel<Comment>>(newPath)
+    return this.httpClient.get<ItemResponseModel<BlogComment>>(newPath)
   }
 
-  getByBlogId(blogId:number):Observable<ListResponseModel<Comment>>{
+  getByBlogId(blogId:number):Observable<ListResponseModel<BlogComment>>{
     let newPath = this.apiURL + 'comments/getcommentsbyblogid?id='+blogId;
-    return this.httpClient.get<ListResponseModel<Comment>>(newPath)
+    return this.httpClient.get<ListResponseModel<BlogComment>>(newPath)
   }
 
-  getByUserId(userId:number):Observable<ListResponseModel<Comment>>{
+  getByUserId(userId:number):Observable<ListResponseModel<BlogComment>>{
     let newPath = this.apiURL + 'comments/getcommentsbyuserid?id='+userId;
-    return this.httpClient.get<ListResponseModel<Comment>>(newPath)
+    return this.httpClient.get<ListResponseModel<BlogComment>>(newPath)
   }
 }

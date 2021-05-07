@@ -7,6 +7,7 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { FuncsService } from '../services/funcs.service';
+import { UserService } from '../services/user.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -15,6 +16,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     let token = this.funcsService.sessionStorageGetItem("token");
+
     let newRequest:HttpRequest<any>;
     newRequest = request.clone({
       headers: request.headers.set("Authorization", "Bearer " + token)

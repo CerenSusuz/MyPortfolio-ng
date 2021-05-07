@@ -42,13 +42,11 @@ export class SignUpComponent implements OnInit {
     if(this.registerForm.valid){
       let registerModel:RegisterModel = Object.assign({},this.registerForm.value);
       this.authService.register(registerModel).subscribe(response=>{
-        console.log(response);
         sessionStorage.setItem("token",response.data.token);
         this.getUserByEmail(registerModel.email);
         this.toastr.info(response.message)
         this.router.navigate(['/login'])
       }, responseError=>{
-        console.error(responseError)
         this.toastr.error(responseError.error);
       });
     }

@@ -31,7 +31,6 @@ export class CertificateAddComponent implements OnInit {
   add(){
     if(this.certificateAddForm.valid){      
       let certificateModel = Object.assign({},this.certificateAddForm.value)
-      console.log(certificateModel)
       this.certificateService.add(certificateModel).subscribe(response=>{
         this.toastrService.success("OK admin")
         this.router.navigate(['/admin']);

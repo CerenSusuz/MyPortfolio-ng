@@ -70,7 +70,6 @@ export class EditInfoComponent implements OnInit {
     if(this.editProfileForm.valid){
       let profileModel = Object.assign({},this.editProfileForm.value)
       this.userService.update(profileModel).subscribe(response=>{
-       console.groupCollapsed(profileModel)
         this.toastrService.success("Login AGAIN please");
         this.router.navigate(["/login"]);
         this.authService.logOut();
@@ -102,11 +101,9 @@ export class EditInfoComponent implements OnInit {
   checkForm(){
     if(this.editProfileForm.valid){
       let profileModel = Object.assign({},this.editProfileForm.value)
-      console.log(this.user)
       profileModel.id=this.user.id;
       profileModel.firstName=this.user.firstName;
       profileModel.lastName=this.user.lastName;
-      console.log(profileModel)
     }else{
       this.toastrService.error("Complete the form.","ERROR")
     }

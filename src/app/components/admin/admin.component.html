@@ -19,6 +19,9 @@
 <div *ngIf="!comments" class="alert alert-info w-100" role="alert">
   Not exist comments
 </div>
+<div *ngIf="!users" class="alert alert-info w-100" role="alert">
+  Not exist users
+</div>
 
 <section class="main-banner parallaxie mb-4" style="background: url('assets/img/logo.png')">
   <div class="heading">
@@ -238,6 +241,31 @@
       <td>{{ comment.writtenDate | date:'dd-MM-yyyy'}}</td>
       <td><button type="button" class="btn btn-outline-danger btn-sm"
           (click)="deleteComment(comment)">DELETE</button></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Users -->
+<table *ngIf="users" class="table">
+  <thead>
+    <h4>Users</h4>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>email</th>
+      <th>status</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let user of users" (click)="setCurrentUser(user)"
+      [class]="getUserClass(user)">
+      <td>{{ user.id}}</td>
+      <td>{{ user.firstName}}  {{user.lastName}}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.status }}</td>
+      <td><button type="button" class="btn btn-outline-danger btn-sm"
+          (click)="deleteUser(user)">DELETE</button></td>
     </tr>
   </tbody>
 </table>

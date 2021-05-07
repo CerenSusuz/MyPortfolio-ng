@@ -11,8 +11,7 @@ import { CertificateAddComponent } from './components/certificate/certificate-ad
 import { CertificateDetailComponent } from './components/certificate/certificate-detail/certificate-detail.component';
 import { CertificateImageAddComponent } from './components/certificate/certificate-image-add/certificate-image-add.component';
 import { CertificateUpdateComponent } from './components/certificate/certificate-update/certificate-update.component';
-import { CommentUpdateComponent } from './components/comment-update/comment-update.component';
-import { ContactComponent } from './components/contact/contact.component';
+import { CommentEditComponent } from './components/comment-edit/comment-edit.component';
 import { EditInfoComponent } from './components/edit-info/edit-info.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { LoginComponent } from './components/login/login.component';
@@ -27,32 +26,30 @@ const routes: Routes = [
   {path:"",pathMatch:"full",component:HomepageComponent},
   {path:"homepage",pathMatch:"full",component:HomepageComponent},
   {path:"aboutMe",component:AboutMeComponent},
-  // {path:"contact",component:ContactComponent},
   {path:"login",component:LoginComponent},
-  {path:"register",component:SignUpComponent},
   {path:"signUp",component:SignUpComponent},
-  {path:"admin",component:AdminComponent, canActivate:[LoginGuard]},
-  {path:"user/edit",component:EditInfoComponent},
+  {path:"admin",component:AdminComponent},
+  {path:"user/edit",component:EditInfoComponent, canActivate:[LoginGuard]},
 
   {path:"certificates/details/:certificateId",component:CertificateDetailComponent, canActivate:[LoginGuard]},
-  {path:"certificate/update/:id",component:CertificateUpdateComponent, canActivate:[LoginGuard]},
-  {path:"certificate/add",component:CertificateAddComponent, canActivate:[LoginGuard]},
-  {path:"certificate/addImage/:id",component:CertificateImageAddComponent, canActivate:[LoginGuard]},
+  {path:"certificate/update/:id",component:CertificateUpdateComponent},
+  {path:"certificate/add",component:CertificateAddComponent},
+  {path:"certificate/addImage/:id",component:CertificateImageAddComponent},
 
   {path:"blogs/details/:blogId",component:BlogDetaillComponent, canActivate:[LoginGuard]},
-  {path:"blog/add",component:BlogAddComponent, canActivate:[LoginGuard]},
-  {path:"blog/update/:id",component:BlogUpdateComponent, canActivate:[LoginGuard]},
-  {path:"blog/addImage/:id",component:BlogImageAddComponent, canActivate:[LoginGuard]},
+  {path:"blog/add",component:BlogAddComponent,canActivate:[LoginGuard]},
+  {path:"blog/update/:id",component:BlogUpdateComponent},
+  {path:"blog/addImage/:id",component:BlogImageAddComponent},
   {path:"blogs",component:BlogsComponent, canActivate:[LoginGuard]},
+  {path:"blogsofsubjects/:subjectId",component:SubjectviablogComponent},
 
-  {path:"blogsofsubjects/:subjectId",component:SubjectviablogComponent, canActivate:[LoginGuard]},
+  {path:"project/add",component:ProjectAddComponent},
+  {path:"project/update/:id",component:ProjectUpdateComponent},
 
-  {path:"project/add",component:ProjectAddComponent, canActivate:[LoginGuard]},
-  {path:"project/update/:id",component:ProjectUpdateComponent, canActivate:[LoginGuard]},
+  {path:"picture/add",component:PictureAddComponent},
+  
+  {path:"comment/update/:id",component:CommentEditComponent},
 
-  {path:"picture/add",component:PictureAddComponent, canActivate:[LoginGuard]},
-
-  {path:"comment/update/:id",component:CommentUpdateComponent, canActivate:[LoginGuard]},
 ];
 
 @NgModule({

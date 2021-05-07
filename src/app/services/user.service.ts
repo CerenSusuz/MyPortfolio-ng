@@ -22,6 +22,11 @@ export class UserService {
     return this.httpClient.get<ItemResponseModel<User>>(newPath);
   }
 
+  getAll():Observable<ListResponseModel<User>>{
+    let newPath = this.apiURL+'getall';
+    return this.httpClient.get<ListResponseModel<User>>(newPath);
+  }
+
   getClaim(user:User):Observable<ListResponseModel<Claim>>{
     let newPath = this.apiURL+'getclaims';
     return this.httpClient.post<ListResponseModel<Claim>>(newPath,user);

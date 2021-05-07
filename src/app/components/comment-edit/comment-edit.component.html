@@ -1,0 +1,31 @@
+
+<div class="container">
+    <div class="card" style="border-radius: 18px; color: darkgreen; border-color: darkolivegreen;">
+      <div class="card-header">
+        <h5 style="color:rgb(77, 90, 77); font-weight: 700; font-size: 24px;" class="title mt-2" >Update Comment</h5>
+      </div>
+    
+      <div class="card-body">
+    
+        <form [formGroup]="commentUpdateForm">
+    
+          <div class="row">
+            <div class="mb-3">
+              <label for="content">content</label>
+              <div class="form-group">
+                <input type="text" id="content" class="form-control" formControlName="content" />
+              </div>
+            </div>
+          </div>
+    
+        </form>
+    
+      </div>
+    
+      <div class="card-footer">
+        <button class="btn btn-fill btn-success" (click)="update()">Update</button>
+      </div>
+    
+    </div>
+  </div>
+  

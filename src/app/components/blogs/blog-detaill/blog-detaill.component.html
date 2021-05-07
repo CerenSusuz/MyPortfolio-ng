@@ -36,36 +36,36 @@
 
     </div>
 
-    <div *ngIf="comments" class="section-title mt-5 pt-5">
+    <div *ngIf="comments?.length>0" class="section-title mt-5 pt-5">
         <p>Comments</p>
         <hr>
     </div>
+
     <div *ngIf="comments">
         <div *ngFor="let comment of comments" class="col-6">
             <div class="post-info">
                 <p class="pt-4" style="font-style: italic;">{{comment.content}}</p>
-                <span class="float-end" style="color: darkblue;">written by {{comment.user}} at {{comment.writtenDate | date:'dd-MM-yyyy'}}</span>
-            
+                <span class="float-end" style="color: darkblue;">written by {{comment.user}} at {{comment.writtenDate |
+                    date:'dd-MM-yyyy'}}</span>
+
             </div>
             <button (click)="delete(comment)" class="btn btn-danger float-end"><i class="fas fa-trash-alt"></i></button>
-            <button routerLink="/comment/update/{{comment.id}}" class="btn btn-warning float-end" data-bs-toggle="modal" data-bs-target="#exampleUpdateModal"><i class="fas fa-trash-alt"></i></button>
+            <button *ngIf="isUser(comment)" routerLink="/comment/update/{{comment.id}}" type="button" class="btn btn-success float-end "><i class="fas fa-pencil-alt"></i></button>
 
         </div>
     </div>
 
-  <app-comment-update></app-comment-update>
-
     <div class=" mt-2 pt-2">
-            <form [formGroup]="commentAddForm">
+        <form [formGroup]="commentAddForm">
 
-                <div class="col-6">
-                    <label for="content">your comment:</label>
-                    <div class="form-group">
-                        <input type="text" id="content" class="form-control" formControlName="content" />
-                    </div>
+            <div class="col-6 mt-5">
+                <label for="content">your comment:</label>
+                <div class="form-group">
+                    <input type="text" id="content" class="form-control" formControlName="content" />
                 </div>
+            </div>
 
-            </form>
+        </form>
 
         <div class="card-footer">
             <button class="btn btn-fill btn-success" (click)="add()">ADD</button>

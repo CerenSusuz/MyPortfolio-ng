@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
+import { FuncsService } from 'src/app/services/funcs.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -30,7 +31,8 @@ export class EditInfoComponent implements OnInit {
     private formBuilder:FormBuilder,
     private toastrService:ToastrService,
     private authService:AuthService,
-    private router:Router) { }
+    private router:Router,
+    private funcsService:FuncsService) { }
 
   ngOnInit(): void {
     this.createProfileAddForm();
@@ -50,7 +52,7 @@ export class EditInfoComponent implements OnInit {
   }
 
   getUser(){
-        this.userService.getByEmail(sessionStorage.getItem('email')!).subscribe(response=>{
+        this.userService.getByEmail(this.funcsService.sessionStorageGetItem('email')!).subscribe(response=>{
             this.user = response.data;
             this.id = this.user.id;
             this.firstName = this.user.firstName;

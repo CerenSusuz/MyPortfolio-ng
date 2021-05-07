@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { RegisterModel } from 'src/app/models/registerModel';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
+import { FuncsService } from 'src/app/services/funcs.service';
 import { UserService } from 'src/app/services/user.service';
 import { environment } from 'src/environments/environment';
 
@@ -23,7 +24,8 @@ export class SignUpComponent implements OnInit {
     private toastr:ToastrService,
     private formBuilder:FormBuilder,
     private router:Router,
-    private userService:UserService) { }
+    private userService:UserService,
+    private funcsService:FuncsService) { }
 
   ngOnInit(): void {
     this.createRegisterForm();
@@ -42,7 +44,7 @@ export class SignUpComponent implements OnInit {
     if(this.registerForm.valid){
       let registerModel:RegisterModel = Object.assign({},this.registerForm.value);
       this.authService.register(registerModel).subscribe(response=>{
-        sessionStorage.setItem("token",response.data.token);
+        this.funcsService.sessionStorageSetItem("token",response.data.token);
         this.getUserByEmail(registerModel.email);
         this.toastr.info(response.message)
         this.router.navigate(['/login'])

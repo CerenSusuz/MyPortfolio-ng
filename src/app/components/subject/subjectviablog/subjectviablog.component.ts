@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Blog } from 'src/app/models/blog';
-import { BlogImage } from 'src/app/models/blogImage';
-import { environment } from 'src/environments/environment';
-import { BlogImageService } from 'src/app/services/blog-images.service';
 import { BlogService } from 'src/app/services/blog.service';
 import { ActivatedRoute } from '@angular/router';
 

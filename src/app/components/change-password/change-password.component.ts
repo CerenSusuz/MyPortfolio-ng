@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from "@angular/forms"
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
+import { FuncsService } from 'src/app/services/funcs.service';
 
 @Component({
   selector: 'app-change-password',
@@ -17,7 +18,8 @@ export class ChangePasswordComponent implements OnInit {
     private formBuilder:FormBuilder,
     private authService:AuthService,
     private toastrService:ToastrService,
-    private router:Router
+    private router:Router,
+    private funcsService:FuncsService
   ) { }
 
   ngOnInit(): void {
@@ -33,7 +35,7 @@ export class ChangePasswordComponent implements OnInit {
   }
 
   getUserId(){
-     this.currentUserId = parseInt(sessionStorage.getItem("id")!);
+     this.currentUserId = parseInt(this.funcsService.sessionStorageGetItem("id")!);
   }
 
   changePassword(){

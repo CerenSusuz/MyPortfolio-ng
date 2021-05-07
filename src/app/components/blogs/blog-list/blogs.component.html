@@ -1,29 +1,31 @@
-  <!-- Blogs -->
+<!-- Blogs -->
 
-  <div id="blog" class="section lb">
-    <div class="container">
-      <div class="section-title text-center">
-        <h3>Blogs</h3>
-        <hr>
-        <app-subject></app-subject>
-        <hr>
-      </div>
-      <div *ngIf="blogs" class="row m-3">
-        <div *ngFor="let blog of blogs" class="col-md-3 col-sm-6 col-lg-4">
-          <div class="post-box">
-            <div class="post-thumb">
-              <img src="assets/img/blogs.jpg" class="img-fluid" alt="blogs" />
-              <div class="date">
-                <span>{{ blog.publishedDate | date:'dd-MM-yyyy'}}</span>
-              </div>
-            </div>
-            <div class="post-info pt-3">
-              <h4>{{blog.title}}</h4>
-              <p>{{blog.description}}</p>
+<div id="blog" class="section lb">
+  <div class="container">
+    <div class="section-title text-center">
+      <h3>Blogs</h3>
+      <hr>
+      <app-subject></app-subject>
+      <hr>
+    </div>
+
+    <div *ngIf="blogs" class="row m-3">
+      <div *ngFor="let blog of blogs" class="col-md-3 col-sm-6 col-lg-4">
+        <div class="post-box">
+          <div class="post-thumb">
+            <img src="assets/img/blogs.jpg" class="img-fluid" alt="blogs" />
+            <div class="date">
+              <span>{{ blog.publishedDate | date:'dd-MM-yyyy'}}</span>
             </div>
           </div>
-          <button type="button" class="btn btn-warning float-end m-3" routerLink = "/blogs/details/{{blog.id}}">Show Detail</button>
+          <div class="post-info pt-3">
+            <h4>{{blog.title}}</h4>
+            <p>{{blog.description}}</p>
+          </div>
         </div>
+        <button type="button" class="btn btn-warning float-end m-3" routerLink="/blogs/details/{{blog.id}}">Show
+          Detail</button>
       </div>
     </div>
   </div>
+</div>

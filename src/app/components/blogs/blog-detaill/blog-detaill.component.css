@@ -4,3 +4,8 @@
           font-size: 3.5rem;
         }
       }
+
+      img{
+        border: 5px solid darkcyan; 
+        border-radius: 10px;
+      }

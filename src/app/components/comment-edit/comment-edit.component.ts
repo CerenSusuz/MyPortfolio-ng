@@ -57,12 +57,7 @@ export class CommentEditComponent implements OnInit {
           this.toastrService.success("Comment updated.")
           this.router.navigate(['/blogs']);
         }, responseError => {
-          if (responseError.error.Errors?.length > 0) {
-            for (let i = 0; i < responseError.error.Errors.length; i++) {
-              this.toastrService.error(responseError.error.Errors[i].ErrorMessage
-                , "Validators Error")
-            }
-          }
+          this.toastrService.error(responseError.error.Message)
         })
       
     } else {

@@ -246,7 +246,6 @@ export class AdminComponent implements OnInit {
       title: blog.title,
       content: blog.content,
       description: blog.description,
-      publishedDate: blog.publishedDate,
       subjectId: blog.subjectId
     }
     this.blogService.delete(blogModel).subscribe(response => {

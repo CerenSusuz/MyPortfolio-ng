@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
         this.toastr.error(responseError.error)
       })
     }else{
-      this.toastr.warning("ERROR");
+      this.toastr.warning("Enter your info");
     }
   }
 

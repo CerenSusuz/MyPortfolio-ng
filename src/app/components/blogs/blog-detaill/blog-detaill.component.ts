@@ -25,10 +25,10 @@ export class BlogDetaillComponent implements OnInit {
   user: User;
 
   commentAddForm: FormGroup;
-  comments: BlogComment [];
-  currentComment:BlogComment;
+  comments: BlogComment[];
+  currentComment: BlogComment;
 
-  commentUpdateForm:FormGroup;
+  commentUpdateForm: FormGroup;
 
   constructor(private blogImageService: BlogImageService,
     private blogService: BlogService,
@@ -36,7 +36,7 @@ export class BlogDetaillComponent implements OnInit {
     private toastrService: ToastrService,
     private formBuilder: FormBuilder,
     private commentService: CommentService,
-    private funcsService:FuncsService) { }
+    private funcsService: FuncsService) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
@@ -80,7 +80,7 @@ export class BlogDetaillComponent implements OnInit {
 
   createCommentAddForm() {
     this.commentAddForm = this.formBuilder.group({
-      content: ["", Validators.required]
+      content: ["", Validators.required,Validators.maxLength(20)]
     })
   }
 
@@ -94,12 +94,8 @@ export class BlogDetaillComponent implements OnInit {
         this.toastrService.success("Comment added.")
         window.location.reload();
       }, responseError => {
-        if (responseError.error.Errors.length > 0) {
-          for (let i = 0; i < responseError.error.Errors.length; i++) {
-            this.toastrService.error(responseError.error.Errors[i].ErrorMessage
-              , "Validators Error")
-          }
-        }
+        console.error(responseError.Message)
+        this.toastrService.error("Max length 20!")
       })
 
     } else {
@@ -107,21 +103,21 @@ export class BlogDetaillComponent implements OnInit {
     }
   }
 
-  delete(comment:BlogComment ) {
-    if(comment.userId == Number(this.funcsService.sessionStorageGetItem("id"))){
+  delete(comment: BlogComment) {
+    if (comment.userId == Number(this.funcsService.sessionStorageGetItem("id"))) {
       this.commentService.delete(comment).subscribe(response => {
         this.toastrService.success("Your comment deleted")
         window.location.reload()
       }, response => {
         this.toastrService.error("Error")
       })
-    }  else{
+    } else {
       this.toastrService.error("It's not your comment, sorry...")
     }
   }
 
-  isUser(comment:BlogComment){
-    if(comment.userId == Number(this.funcsService.sessionStorageGetItem("id"))){
+  isUser(comment: BlogComment) {
+    if (comment.userId == Number(this.funcsService.sessionStorageGetItem("id"))) {
       return true;
     }
     return false;

@@ -1,10 +1,10 @@
 <div class="container ">
 
-    <div *ngIf="blogs">
+    <div >
 
         <div id="blog" class="section lb">
 
-            <div class="row m-3">
+            <div class="row m-3" *ngIf="blogs">
 
                 <div *ngFor="let blog of blogs" class="col-md-3 col-sm-6 col-lg-4">
 
@@ -14,7 +14,7 @@
                             <img src="assets/img/blogs.jpg" class="img-fluid" alt="blogs" />
 
                             <div class="date">
-                                <span>{{ blog.publishedDate | date:'dd-MM-yyyy'}}</span>
+                                <span>{{ blog.createdAt | date:'dd-MM-yyyy'}}</span>
                             </div>
 
                         </div>

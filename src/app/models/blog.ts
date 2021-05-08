@@ -8,5 +8,4 @@ export interface Blog{
     subjectId:number;
     content:string;
     description:string;
-    publishedDate:Date;
 }

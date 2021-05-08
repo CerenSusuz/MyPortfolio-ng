@@ -59,6 +59,8 @@
   </tbody>
 </table>
 
+<hr>
+
 <!-- Certificate Images -->
 <table *ngIf="certificateImages" class="table">
   <thead>
@@ -87,6 +89,8 @@
   </tbody>
 </table>
 
+<hr>
+
 <!-- Pictures -->
 <table *ngIf="pictures" class="table">
   <thead>
@@ -114,6 +118,8 @@
     </tr>
   </tbody>
 </table>
+
+<hr>
 
 <!-- Projects -->
 <table class="table">
@@ -146,6 +152,8 @@
   </tbody>
 </table>
 
+<hr>
+
 <!-- Blogs -->
 <table class="table">
   <thead>
@@ -171,7 +179,6 @@
       <td>{{ blog.title }}</td>
       <td>{{ blog.subjectId }} </td>
       <td>{{ blog.description }}</td>
-      <td>{{ blog.publishedDate | date:'dd-MM-yyyy'}}</td>
       <td><button type="button" class="btn btn-outline-success btn-sm"
           routerLink="/blog/update/{{blog.id}}">UPDATE</button></td>
       <td><button type="button" class="btn btn-outline-info btn-sm" routerLink="/blog/addImage/{{blog.id}}">ADD
@@ -182,6 +189,8 @@
     </tr>
   </tbody>
 </table>
+
+<hr>
 
 <!-- Certificates -->
 <table class="table">
@@ -218,6 +227,8 @@
   </tbody>
 </table>
 
+<hr>
+
 <!-- Comments -->
 <table *ngIf="comments" class="table">
   <thead>
@@ -245,6 +256,8 @@
   </tbody>
 </table>
 
+<hr>
+
 <!-- Users -->
 <table *ngIf="users" class="table">
   <thead>
@@ -269,3 +282,5 @@
     </tr>
   </tbody>
 </table>
+
+<hr>

@@ -80,7 +80,7 @@ export class BlogDetaillComponent implements OnInit {
 
   createCommentAddForm() {
     this.commentAddForm = this.formBuilder.group({
-      content: ["", Validators.required,Validators.maxLength(20)]
+      content: ["", Validators.required]
     })
   }
 

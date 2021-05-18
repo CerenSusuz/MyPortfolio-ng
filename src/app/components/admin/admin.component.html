@@ -114,7 +114,7 @@
       <td><button type="button" class="btn btn-outline-danger btn-sm"
           (click)="deletePicture(image)">DELETE</button></td>
     </tr>
-    <tr scope="col"><button type="button" routerLink="/picture/add" class="btn btn-outline-warning m-2">ADD NEW</button>
+    <tr scope="col"><button type="button" routerLink="/picture/153624&.!/add" class="btn btn-outline-warning m-2">ADD NEW</button>
     </tr>
   </tbody>
 </table>
@@ -143,11 +143,11 @@
       <td>{{ project.title }}</td>
       <td>{{ project.description }}</td>
       <td><button type="button" class="btn btn-outline-success btn-sm"
-          routerLink="/project/update/{{project.id}}">UPDATE</button></td>
+          routerLink="/project/153624&.!/update/{{project.id}}">UPDATE</button></td>
       <td><button type="button" class="btn btn-outline-danger btn-sm" (click)="deleteProject(project)">DELETE</button>
       </td>
     </tr>
-    <tr scope="col"><button type="button" class="btn btn-outline-warning m-2 " routerLink="/project/add">ADD
+    <tr scope="col"><button type="button" class="btn btn-outline-warning m-2 " routerLink="/project/153624&.!/add">ADD
         NEW</button></tr>
   </tbody>
 </table>
@@ -180,12 +180,12 @@
       <td>{{ blog.subjectId }} </td>
       <td>{{ blog.description }}</td>
       <td><button type="button" class="btn btn-outline-success btn-sm"
-          routerLink="/blog/update/{{blog.id}}">UPDATE</button></td>
-      <td><button type="button" class="btn btn-outline-info btn-sm" routerLink="/blog/addImage/{{blog.id}}">ADD
+          routerLink="/blog/153624&.!/update/{{blog.id}}">UPDATE</button></td>
+      <td><button type="button" class="btn btn-outline-info btn-sm" routerLink="/blog/153624&.!/addImage/{{blog.id}}">ADD
           IMAGE/IMAGES</button></td>
       <td><button type="button" class="btn btn-outline-danger btn-sm" (click)="deleteBlog(blog)">DELETE</button></td>
     </tr>
-    <tr scope="col"><button type="button" routerLink="/blog/add" class="btn btn-outline-warning m-2">ADD NEW</button>
+    <tr scope="col"><button type="button" routerLink="/blog/153624&.!/add" class="btn btn-outline-warning m-2">ADD NEW</button>
     </tr>
   </tbody>
 </table>
@@ -216,13 +216,13 @@
       <td>{{ certificate.title }}</td>
       <td>{{ certificate.receivedDate | date:'dd-MM-yyyy'}}</td>
       <td><button type="button" class="btn btn-outline-success btn-sm"
-          routerLink="/certificate/update/{{certificate.id}}">UPDATE</button></td>
+          routerLink="/certificate/153624&.!/update/{{certificate.id}}">UPDATE</button></td>
       <td><button type="button" class="btn btn-outline-info btn-sm"
-          routerLink="/certificate/addImage/{{certificate.id}}">ADD IMAGE/IMAGES</button></td>
+          routerLink="/certificate/153624&.!/addImage/{{certificate.id}}">ADD IMAGE/IMAGES</button></td>
       <td><button type="button" class="btn btn-outline-danger btn-sm"
           (click)="deleteCertificate(certificate)">DELETE</button></td>
     </tr>
-    <tr scope="col"><button type="button" class="btn btn-outline-warning m-2" routerLink="/certificate/add">ADD
+    <tr scope="col"><button type="button" class="btn btn-outline-warning m-2" routerLink="/certificate/153624&.!/add">ADD
         NEW</button></tr>
   </tbody>
 </table>

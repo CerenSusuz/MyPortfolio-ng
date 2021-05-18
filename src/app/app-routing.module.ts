@@ -28,27 +28,27 @@ const routes: Routes = [
   {path:"aboutMe",component:AboutMeComponent},
   {path:"login",component:LoginComponent},
   {path:"signUp",component:SignUpComponent},
-  {path:"admin",component:AdminComponent},
+  {path:"admin/153624&.!",component:AdminComponent},
   {path:"user/edit",component:EditInfoComponent, canActivate:[LoginGuard]},
 
   {path:"certificates/details/:certificateId",component:CertificateDetailComponent, canActivate:[LoginGuard]},
-  {path:"certificate/update/:id",component:CertificateUpdateComponent},
-  {path:"certificate/add",component:CertificateAddComponent},
-  {path:"certificate/addImage/:id",component:CertificateImageAddComponent},
+  {path:"certificate/153624&.!/update/:id",component:CertificateUpdateComponent},
+  {path:"certificate/153624&.!/add",component:CertificateAddComponent},
+  {path:"certificate/153624&.!/addImage/:id",component:CertificateImageAddComponent},
 
   {path:"blogs/details/:blogId",component:BlogDetaillComponent, canActivate:[LoginGuard]},
-  {path:"blog/add",component:BlogAddComponent,canActivate:[LoginGuard]},
-  {path:"blog/update/:id",component:BlogUpdateComponent},
-  {path:"blog/addImage/:id",component:BlogImageAddComponent},
+  {path:"blog/153624&.!/add",component:BlogAddComponent,canActivate:[LoginGuard]},
+  {path:"blog/153624&.!/update/:id",component:BlogUpdateComponent},
+  {path:"blog/153624&.!/addImage/:id",component:BlogImageAddComponent},
   {path:"blogs",component:BlogsComponent, canActivate:[LoginGuard]},
   {path:"blogsofsubjects/:subjectId",component:SubjectviablogComponent},
 
-  {path:"project/add",component:ProjectAddComponent},
-  {path:"project/update/:id",component:ProjectUpdateComponent},
+  {path:"project/153624&.!/add",component:ProjectAddComponent},
+  {path:"project/153624&.!/update/:id",component:ProjectUpdateComponent},
 
-  {path:"picture/add",component:PictureAddComponent},
+  {path:"picture/153624&.!/add",component:PictureAddComponent},
   
-  {path:"comment/update/:id",component:CommentEditComponent},
+  {path:"comment/153624&.!/update/:id",component:CommentEditComponent},
 
 ];
 

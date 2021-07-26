@@ -319,7 +319,7 @@ export class AdminComponent implements OnInit {
       blog: comment.blog,
       user: comment.user,
       userId: comment.userId,
-      writtenDate: comment.writtenDate,
+      createdDate: comment.createdDate,
       content: comment.content
     }
     this.commentService.delete(commentModel).subscribe(response => {

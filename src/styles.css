@@ -107,9 +107,8 @@ ul, li, ol{
     HEADER
 -------------------------------------------------------------------*/
 nav{
-    line-height: 2;
     opacity: 0.8;
-    background-color: white;
+    background-color: rgb(236, 229, 229);
 }
 
 .navbar-light .navbar-nav .nav-link{
@@ -445,10 +444,8 @@ select.selectpicker {
 
 
 .copyrights {
-    background-color: #0f0e0e;
     box-sizing: border-box;
     text-align: center;
-    padding: 30px 90px;
     overflow: hidden;
 }
 

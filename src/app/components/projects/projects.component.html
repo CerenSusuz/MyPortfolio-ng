@@ -2,8 +2,7 @@
  <div id="project" class="section lb">
     <div class="container">
       <div class="section-title text-center">
-        <h3>Projects</h3>
-        <hr>
+        <h3>My Projects</h3>
       </div>
       <div *ngIf="projects">
         <div *ngFor="let project of projects" class="mt-5">
@@ -12,12 +11,9 @@
               <i class="fas fa-file-code"></i>
             </div>
             <h3 class="mt-3"><b>{{ project.title }}</b></h3>
-            <hr>
             <p>Description: {{ project.description }}</p>
-            <hr>
             Content:
             <a href="{{ project.content }}">{{ project.content }}</a>
-            <hr>
             Link:
             <a href="{{ project.link }}">{{ project.link }}</a>
           </div>

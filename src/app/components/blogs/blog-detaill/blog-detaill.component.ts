@@ -87,15 +87,14 @@ export class BlogDetaillComponent implements OnInit {
 
   add() {
     if (this.commentAddForm.valid) {
-      let commentModel: BlogComment = Object.assign({}, this.commentAddForm.value)
+      let commentModel = Object.assign({}, this.commentAddForm.value)
       commentModel.userId = Number(this.funcsService.sessionStorageGetItem("id"));
       commentModel.blogId = this.blog.id;
       this.commentService.add(commentModel).subscribe(response => {
         this.toastrService.success("Comment added.")
         window.location.reload();
       }, responseError => {
-        console.error(responseError.Message)
-        this.toastrService.error("Max length 20!")
+        this.toastrService.error(responseError.message)
       })
 
     } else {

@@ -41,7 +41,7 @@
         <div *ngFor="let comment of comments" class="col-6" >
             <div class="post-info ">
                 <p class="pt-4" style="font-style: italic;">{{comment.content}}</p>
-                <span style="color: darkblue; font-size: 14px;">written by {{comment.user}} at {{comment.writtenDate |
+                <span style="color: darkblue; font-size: 14px;">written by {{comment.user}} at {{comment.createdDate |
                     date:'dd-MM-yyyy'}}</span>
             </div>
 

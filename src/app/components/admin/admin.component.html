@@ -249,7 +249,7 @@
       <td>{{ comment.content}}</td>
       <td>{{ comment.blog }}</td>
       <td>{{ comment.user }}</td>
-      <td>{{ comment.writtenDate | date:'dd-MM-yyyy'}}</td>
+      <td>{{ comment.createdDate | date:'dd-MM-yyyy'}}</td>
       <td><button type="button" class="btn btn-outline-danger btn-sm"
           (click)="deleteComment(comment)">DELETE</button></td>
     </tr>

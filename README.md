@@ -10,6 +10,20 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 <img src="4.png">
 
+<img src="5.png">
+
+<img src="6.png">
+
+<img src="7.png">
+
+<img src="8.png">
+
+<img src="9.png">
+
+<img src="10.png">
+
+<img src="11.png">
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
